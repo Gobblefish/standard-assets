@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: mat_gradient_3
-  m_Shader: {fileID: -6465566751694194690, guid: a20db9da56053324ea1007b634ab44aa, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 83717a8e37324c747b440f18ce3923e5, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 575222de56178eb499916b5418e4efed, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:

@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: mat_flatten_red
-  m_Shader: {fileID: -6465566751694194690, guid: e1bf63ae1d08618449b624c936930a75, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: ff4f8ecf8abae3b45bcf181eef2beb6a, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
