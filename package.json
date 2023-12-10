@@ -8,7 +8,6 @@
   "documentationUrl": "https://example.com/",
   "changelogUrl": "https://example.com/changelog.html",
   "licensesUrl": "https://example.com/licensing.html",
-  "repository":"https://github.com/Gobblefish/standard-assets",
   "dependencies": {
     "com.unity.render-pipelines.universal": "12.1.6",
     "com.unity.2d.common": "6.0.3"
@@ -22,5 +21,9 @@
     "name": "Gobblefish",
     "email": "gobblefishStudios@gmail.com",
     "url": "https://www.gobblefish.com"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gobblefish/standard-assets.git"
+  }  
 }
