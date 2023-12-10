@@ -13,6 +13,8 @@ namespace Gobblefish.Animation {
     /// </summary>
     [System.Serializable]
     public class MaterialFloatAnimation {
+
+        // Just to see how well this updates.
         
         // The parameters of the animation.
         [Header("Params")]
