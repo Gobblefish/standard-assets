@@ -4,21 +4,19 @@
   "displayName": "Gobblefish Standard Assets",
   "description": "A bunch of reusable assets that can be dropped into any project",
   "unity": "2021.2",
-  "documentationUrl": "https://example.com/",
-  "changelogUrl": "https://example.com/changelog.html",
-  "licensesUrl": "https://example.com/licensing.html",
   "dependencies": {
     "com.unity.render-pipelines.universal": "12.1.6",
     "com.unity.2d.common": "6.0.3"
  },
  "keywords": [
+    "gobblefish"
   ],
   "author": {
     "name": "Gobblefish",
     "url": "https://www.gobblefish.com"
   },
   "repository": {
-    "type": "git",
-    "url": "https://github.com/Gobblefish/standard-assets.git"
+    "url": "https://github.com/Gobblefish/standard-assets.git",
+    "type": "git"
   }  
 }

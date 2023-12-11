@@ -1,0 +1,15 @@
+{
+    "name": "Gobblefish.Runtime",
+    "rootNamespace": "",
+    "references": [
+        "Gobblefish.Animation",
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "noEngineReferences": false
+}
