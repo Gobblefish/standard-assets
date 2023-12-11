@@ -2,7 +2,9 @@
     "name": "Gobblefish.Runtime",
     "rootNamespace": "",
     "references": [
-        "Gobblefish.Animation",
+        "Unity.RenderPipelines.Universal.Runtime",
+        "Unity.RenderPipelines.Universal.Editor",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
