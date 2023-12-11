@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: mat_filter_highlight_recolor_black_0
+  m_Name: mat_filter_highlight_recolor_black_0 1
   m_Shader: {fileID: -6465566751694194690, guid: 2642fd90bd151ef469f79396d41709ca, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -38,13 +38,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BlendOpacity: -0.92
+    - _BlendOpacity: 1
     - _HighlightIntensity: 3.7
     - _Intensity: 1.4
-    - _IntensityThreshold: 0.41
+    - _IntensityThreshold: 1.25
     - _Jumbliness: 1
     - _NoiseScale: 1
     - _Scale: 4.81
     m_Colors:
-    - _Color: {r: 0.77690166, g: 0.6123621, b: 0.9339623, a: 0}
+    - _Color: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

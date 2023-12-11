@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: mat_filter_highlight_recolor_black_0
-  m_Shader: {fileID: -6465566751694194690, guid: 2642fd90bd151ef469f79396d41709ca, type: 3}
+  m_Name: mat_saturate_towards_blue 1
+  m_Shader: {fileID: -6465566751694194690, guid: 83717a8e37324c747b440f18ce3923e5, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -38,13 +38,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BlendOpacity: -0.92
-    - _HighlightIntensity: 3.7
-    - _Intensity: 1.4
-    - _IntensityThreshold: 0.41
-    - _Jumbliness: 1
-    - _NoiseScale: 1
-    - _Scale: 4.81
+    - _Amplitude: 0.03
+    - _Blend: 0.56
+    - _FadePercent: 1
+    - _Grade: -0.06
+    - _Opacity: 1
+    - _Outline: 0.24
+    - _Period: 1
+    - _Saturation: 0.92
+    - _Value: 0.74
+    - _XFreq: 30
     m_Colors:
-    - _Color: {r: 0.77690166, g: 0.6123621, b: 0.9339623, a: 0}
+    - _BackColor: {r: 0.1764706, g: 0, b: 0.30980393, a: 0}
+    - _Color: {r: 0.026241222, g: 0, b: 0.07818743, a: 0}
+    - _ForeColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []

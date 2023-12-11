@@ -39,7 +39,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _BlendOpacity: 1
-    - _HighlightIntensity: 3.7
+    - _HighlightIntensity: 15.58
     - _Intensity: 1.4
     - _IntensityThreshold: 1.25
     - _Jumbliness: 1
