@@ -36,6 +36,10 @@ namespace Gobblefish.Graphics {
             MoveToTarget(Time.fixedDeltaTime);
         }
 
+        public void SetDefaultTarge(Transform target) {
+            m_DefaultTarget = target;
+        }
+
         // Sets the target position of the camera.
         public void AddTarget(Transform target) {
             if (!m_Targets.Contains(target)) {

@@ -40,6 +40,7 @@ namespace Gobblefish.Animation {
 
         // Set the values from the lights.
         public void SetLightParams(Light2D light) {
+            baseIntensity = light.intensity;
             baseInnerRadius = light.pointLightInnerRadius ;
             baseOuterRadius = light.pointLightOuterRadius ;
         }
