@@ -36,7 +36,7 @@ namespace Gobblefish.Graphics {
             MoveToTarget(Time.fixedDeltaTime);
         }
 
-        public void SetDefaultTarge(Transform target) {
+        public void SetDefaultTarget(Transform target) {
             m_DefaultTarget = target;
         }
 
@@ -58,6 +58,7 @@ namespace Gobblefish.Graphics {
         public void MoveToTarget(float dt) {
             Vector2 aggregatedTargets = new Vector2(0f, 0f);
             if (m_Targets.Count == 0) {
+                if (m_DefaultTarget == null) { return; }
                 aggregatedTargets = m_DefaultTarget.position;
             }
             else {
