@@ -29,7 +29,7 @@ namespace Gobblefish {
         public static Gobblefish.Audio.AudioManager Audio => INSTANCE.m_AudioManager;
 
         // Runs once on instantiation.
-        void Awake() {
+        protected override Awake() {
             INSTANCE = this;
             m_OnGameLoad.Invoke();
         }
