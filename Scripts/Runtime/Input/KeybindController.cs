@@ -6,9 +6,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 // Gobblefish.
-using Gobblefish.Input.Keyboard;
+using Gobblefish.Input;
 
-namespace Gobblefish.Input.Keyboard {
+namespace Gobblefish.Input {
 
     public class KeybindController : MonoBehaviour {
 

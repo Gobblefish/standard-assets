@@ -73,7 +73,6 @@ namespace Gobblefish.Audio {
 
             // Skip the transient.
             audioSource.time = 0.02f;
-
             
         }
 
