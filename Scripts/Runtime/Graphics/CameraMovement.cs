@@ -67,6 +67,7 @@ namespace Gobblefish.Graphics {
             
             Vector3 targetPosition = (Vector3)aggregatedTargets + CameraPlane;
             // transform.Move(targetPosition, m_MoveSpeed, dt);
+            Move(targetPosition, m_MoveSpeed, dt);
         
         }
 
