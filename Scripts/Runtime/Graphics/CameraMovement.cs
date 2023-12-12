@@ -69,6 +69,23 @@ namespace Gobblefish.Graphics {
         
         }
 
+        // Moves an obstacle towards a target.
+        public void Move(Vector2 destination, float speed, float deltaTime) {
+            Vector2 pos = (Vector2)transform.position;
+            if (destination == pos) {
+                return;
+            }
+
+            Vector2 displacement = destination - pos;
+            Vector3 deltaPosition = displacement.normalized * speed * deltaTime;
+            if (displacement.magnitude < deltaPosition.magnitude) {
+                deltaPosition = displacement;
+            }
+
+            transform.position += deltaPosition;
+            
+        }
+
         void GetTarget(out Vector2 target) {
             target = new Vector2(0f, 0f);
             for (int i = 0; i < m_Targets.Count; i++) {
