@@ -19,14 +19,18 @@ namespace Gobblefish {
     public class GameManager : MonoBehaviour {
 
         // Singleton.
-        public static GameManager Instance;
+        public static GameManager INSTANCE;
 
         [SerializeField]
         private UnityEvent m_OnGameLoad = new UnityEvent();
 
+        [SerializeField]
+        private Gobblefish.Audio.AudioManager m_AudioManager;
+        public static Gobblefish.Audio.AudioManager Audio => INSTANCE.m_AudioManager;
+
         // Runs once on instantiation.
         void Awake() {
-            Instance = this;
+            INSTANCE = this;
             m_OnGameLoad.Invoke();
         }
 
