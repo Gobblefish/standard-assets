@@ -66,7 +66,7 @@ namespace Gobblefish.Audio {
             
             // Set the audio sources parameters.
             audioSource.clip = audioClip;
-            audioSource.volume = Mathf.Sqrt(volume) * AudioManager.Settings.soundVolume * (AudioManager.Settings.soundMuted ? 0f : 1f);
+            audioSource.volume = Mathf.Sqrt(volume) * AudioManager.SETTINGS.soundVolume * (AudioManager.SETTINGS.soundMuted ? 0f : 1f);
             
             // Adjust the pitch 
             audioSource.pitch = pitch * Random.Range(1f - PITCH_SPREAD, 1f + PITCH_SPREAD);

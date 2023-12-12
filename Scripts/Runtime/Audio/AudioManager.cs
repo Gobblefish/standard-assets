@@ -18,22 +18,26 @@ namespace Gobblefish.Audio {
 
         [SerializeField]
         private AudioSettings m_Settings;
-        public static AudioSettings Settings => INSTANCE.m_Settings;
+        public AudioSettings Settings => m_Settings;
+        public static AudioSettings SETTINGS => INSTANCE.m_Settings;
 
         // The music being played in the game.
         [SerializeField]
         private MusicController m_Music;
-        public static MusicController Music => INSTANCE.m_Music;
+        public MusicController Music => INSTANCE.m_Music;
+        public static MusicController MUSIC => INSTANCE.m_Music;
         
         // The ambience being played in the game.
         [SerializeField]
         private MusicController m_Ambience;
-        public static MusicController Ambience => INSTANCE.m_Ambience;
+        public MusicController Ambience => m_Ambience;
+        public static MusicController AMBIENCE => INSTANCE.m_Ambience;
 
         // The sounds being played in the game.
         [SerializeField]
         private SoundController m_Sounds;
-        public static SoundController Sounds => INSTANCE.m_Sounds;
+        public SoundController Sounds => m_Sounds;
+        public static SoundController SOUNDS => INSTANCE.m_Sounds;
 
         public void SetSettings(AudioSettings settings) {
             m_Settings = settings;
