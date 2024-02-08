@@ -13,9 +13,6 @@ namespace Gobblefish.Input {
     ///<summary>
     public abstract class InputSystem : MonoBehaviour {
 
-        /* --- Variables --- */
-        #region Variables
-        
         // The characters directional input.
         [SerializeField] 
         protected DirectionalInput m_Direction = new DirectionalInput();
@@ -23,19 +20,10 @@ namespace Gobblefish.Input {
 
         // The characters action inputs.
         [SerializeField] 
-        protected ActionInput m_Action0 = new ActionInput();
-        public ActionInput Action0 => m_Action0;
-        
-        [SerializeField] 
-        protected ActionInput m_Action1 = new ActionInput();
-        public ActionInput Action1 => m_Action1;
-        
-        [SerializeField] 
-        protected ActionInput m_Action2 = new ActionInput();
-        public ActionInput Action2 => m_Action2;
+        protected ActionInput[] m_Actions;
+        public ActionInput[] Actions => m_Actions;
 
-        #endregion
-
+        // Runs once every frame.
         void Update() {
             Think(Time.deltaTime);
         }
@@ -46,9 +34,10 @@ namespace Gobblefish.Input {
             m_Direction.OnUpdate(Vector2.zero);
 
             // Updates each of the action buttons.
-            m_Action0.OnUpdate(false, false, dt);
-            m_Action1.OnUpdate(false, false, dt);
-            m_Action2.OnUpdate(false, false, dt);
+            for (int i = 0; i < m_Actions.Length; i++) {
+                m_Actions[i].OnUpdate(false, false, dt);
+            }
+
         }
 
     }

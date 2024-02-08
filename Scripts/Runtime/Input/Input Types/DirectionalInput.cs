@@ -43,6 +43,11 @@ namespace Gobblefish.Input {
             m_Vector = vector;
         }
 
+        public void Clear() {
+            m_Vector = new Vector2(0f, 0f);
+            m_MostRecent = new Vector2(0f, 0f);
+        }
+
     }
 
 }

@@ -28,6 +28,10 @@ namespace Gobblefish {
         private Gobblefish.Audio.AudioManager m_AudioManager;
         public static Gobblefish.Audio.AudioManager Audio => INSTANCE.m_AudioManager;
 
+        [SerializeField]
+        private Gobblefish.Graphics.GraphicsManager m_GraphicsManager;
+        public static Gobblefish.Graphics.GraphicsManager Graphics => INSTANCE.m_GraphicsManager;
+
         // Runs once on instantiation.
         protected virtual void Awake() {
             INSTANCE = this;

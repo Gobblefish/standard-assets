@@ -20,12 +20,12 @@ namespace Gobblefish.Graphics {
         private GraphicsSettings m_Settings;
         public static GraphicsSettings Settings => INSTANCE.m_Settings;
 
-        //
+        // The camera movement script.
         [SerializeField]
         private CameraMovement m_CamMovement;
         public static CameraMovement CamMovement => INSTANCE.m_CamMovement;
         
-        //
+        // The camera shake script.
         [SerializeField]
         private CameraShake m_CamShake;
         public static CameraShake CamShake => INSTANCE.m_CamShake;
