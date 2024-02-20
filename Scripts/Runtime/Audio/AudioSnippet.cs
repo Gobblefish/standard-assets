@@ -23,7 +23,7 @@ namespace Gobblefish.Audio {
         public int priority = 0;
 
         public void Play() {
-            AudioManager.Sounds.PlaySnippet(this);
+            AudioManager.SOUNDS.PlaySnippet(this);
         }
     
     }
