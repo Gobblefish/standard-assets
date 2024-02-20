@@ -15,10 +15,10 @@ namespace Gobblefish.Audio {
         private AudioSource m_Source;
 
         // Runs once before the first frame.
-        public void Load(float volume) {
+        public void Load() {
             if (m_Source != null) { return; }
             m_Source = GenerateSource();
-            SetVolume(volume);
+            SetVolume(AudioManager.Settings.musicVolume);
         }
 
         // Generates the audio source to play the music from.

@@ -61,8 +61,6 @@ namespace Gobblefish.Animation {
         // The sprite attacted to this.
         private SpriteRenderer m_SpriteRenderer;
 
-
-
         // Runs once on instantiation.
         void Start() {
             m_SpriteRenderer = GetComponent<SpriteRenderer>();

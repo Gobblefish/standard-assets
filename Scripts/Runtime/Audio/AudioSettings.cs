@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Gobblefish.Audio {
 
     [System.Serializable]
-    public class AudioSettings {
+    public sealed class AudioSettings : Gobblefish.Settings<AudioSettings> {
         
         public const string AUDIO_SETTINGS_FILE_PATH = "/settings/audio";
 
@@ -26,11 +26,6 @@ namespace Gobblefish.Audio {
         // Sound Volume.
         public float soundVolume;
         public bool soundMuted;
-
-        public string ToJson() {
-            return JsonUtility.ToJson(this);
-        }
-
         
     }
 
