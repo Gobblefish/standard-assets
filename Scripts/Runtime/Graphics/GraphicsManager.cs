@@ -34,6 +34,11 @@ namespace Gobblefish.Graphics {
         private CameraShake m_CamShake;
         public static CameraShake CamShake => INSTANCE.m_CamShake;
 
+        // The post processor controller.
+        [SerializeField]
+        private PostProcessorController m_PostProcessor;
+        public static PostProcessorController PostProcessor => INSTANCE.m_PostProcessor;
+
         public void SetSettings(GraphicsSettings settings) {
             m_Settings = settings;
         }
