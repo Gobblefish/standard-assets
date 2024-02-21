@@ -16,6 +16,10 @@ namespace Gobblefish.Graphics {
         // The singleton.
         private static GraphicsManager INSTANCE; 
 
+        // The main camera of the game.
+        private Camera m_Camera;
+        public Camera MainCamera => m_Camera;
+
         [SerializeField]
         private GraphicsSettings m_Settings;
         public static GraphicsSettings Settings => INSTANCE.m_Settings;
@@ -38,6 +42,7 @@ namespace Gobblefish.Graphics {
             // Application.targetFrameRate = VisualSettings.FrameRate;
             // m_CameraController.ReshapeWindow();
             // m_CameraController.RecolorScreen(m_DefaultPalette);
+            m_Camera = Camera.main;
         }
 
     }
