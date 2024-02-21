@@ -37,7 +37,8 @@ namespace Gobblefish.Graphics {
         // The post processor controller.
         [SerializeField]
         private PostProcessorController m_PostProcessor;
-        public static PostProcessorController PostProcessor => INSTANCE.m_PostProcessor;
+        public PostProcessorController PostProcessor => m_PostProcessor;
+        public static PostProcessorController POSTPROCESSOR => INSTANCE.m_PostProcessor;
 
         public void SetSettings(GraphicsSettings settings) {
             m_Settings = settings;
@@ -47,6 +48,7 @@ namespace Gobblefish.Graphics {
             // Application.targetFrameRate = VisualSettings.FrameRate;
             // m_CameraController.ReshapeWindow();
             // m_CameraController.RecolorScreen(m_DefaultPalette);
+            INSTANCE = this;
             m_Camera = Camera.main;
         }
 
