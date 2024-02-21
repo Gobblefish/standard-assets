@@ -30,7 +30,7 @@ namespace Gobblefish.Animation {
         public AnimationCurve vertStretchCurve;
 
         [Header("Rotation")]
-        [HideInInspector] public float baseRotation;
+        [HideInInspector] public Quaternion baseRotation;
         public float rotationScale;
         public AnimationCurve rotationCurve;
 
@@ -40,7 +40,7 @@ namespace Gobblefish.Animation {
 
         public void SetTransformParams(Transform transform) {
             basePosition = transform.localPosition; 
-            baseRotation = transform.eulerAngles.z;
+            baseRotation = transform.localRotation;
             baseStretch = transform.localScale;
         }
 
@@ -90,7 +90,7 @@ namespace Gobblefish.Animation {
         }
 
         public Quaternion GetRotation() {
-            return Quaternion.Euler(0f, 0f, baseRotation + rotationScale * rotationCurve.Evaluate(t));
+            return baseRotation * Quaternion.Euler(0f, 0f, rotationScale * rotationCurve.Evaluate(t));
         }
 
     }
@@ -147,7 +147,7 @@ namespace Gobblefish.Animation {
         public static void SnapToOrigin(Transform transform, TransformAnimation animation) {
             transform.localScale = animation.baseStretch;
             transform.localPosition = animation.basePosition;
-            transform.localRotation = Quaternion.Euler(0f, 0f, animation.baseRotation);
+            transform.localRotation = animation.baseRotation;
         }
 
         public static void SnapToOrigin(RectTransform rt, TransformAnimation animation) {
