@@ -87,24 +87,24 @@ namespace Gobblefish.Animation {
             return basePosition + new Vector2(posScale.x * horPosCurve.Evaluate(T), posScale.y * vertPosCurve.Evaluate(T));
         }
 
-        public Vector3 GetPosition(Vector3 position, float T) {
-            return position + new Vector3(posScale.x * horPosCurve.Evaluate(T), posScale.y * vertPosCurve.Evaluate(T), 0f);
+        public Vector3 GetPosition(Vector3 position) {
+            return position + new Vector3(posScale.x * horPosCurve.Evaluate(t), posScale.y * vertPosCurve.Evaluate(t), 0f);
         }
 
         public Vector3 GetStretch() {
             return baseStretch + new Vector2(strectchScale.x * horStretchCurve.Evaluate(t), strectchScale.y * vertStretchCurve.Evaluate(t));
         }
 
-        public Vector3 GetStretch(Vector3 stretch, float T) {
-            return stretch + new Vector3(posScale.x * horPosCurve.Evaluate(T), posScale.y * vertPosCurve.Evaluate(T), 0f);
+        public Vector3 GetStretch(Vector3 stretch) {
+            return stretch + new Vector3(posScale.x * horPosCurve.Evaluate(t), posScale.y * vertPosCurve.Evaluate(t), 0f);
         }
 
         public Quaternion GetRotation() {
             return baseRotation * Quaternion.Euler(0f, 0f, rotationScale * rotationCurve.Evaluate(t));
         }
 
-        public Quaternion GetRotation(Quaternion rotation, float T) {
-            return rotation * Quaternion.Euler(0f, 0f, rotationScale * rotationCurve.Evaluate(T));
+        public Quaternion GetRotation(Quaternion rotation) {
+            return rotation * Quaternion.Euler(0f, 0f, rotationScale * rotationCurve.Evaluate(t));
         }
 
     }
@@ -141,9 +141,10 @@ namespace Gobblefish.Animation {
         }
 
         public static void Animate(Transform transform, Matrix4x4 baseMatrix, TransformAnimation animation, float T) {
-            transform.localPosition = animation.GetPosition(baseMatrix.ExtractPosition(), T);
-            transform.localRotation = animation.GetRotation(baseMatrix.ExtractRotation(), T);
-            transform.localScale = animation.GetStretch(baseMatrix.ExtractScale(), T);
+            animation.SetTime(T);
+            transform.localPosition = animation.GetPosition(baseMatrix.ExtractPosition());
+            transform.localRotation = animation.GetRotation(baseMatrix.ExtractRotation());
+            transform.localScale = animation.GetStretch(baseMatrix.ExtractScale());
         }
 
         public static void Animate(Transform transform, TransformAnimation animation, float dt) {
