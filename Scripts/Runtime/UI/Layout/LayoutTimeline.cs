@@ -16,7 +16,7 @@ namespace Gobblefish.Layout {
 
         // The duration for the loading to take.
         [SerializeField]
-        private int m_Duration;
+        private float m_Duration;
 
         // The position within the timeline. 
         [SerializeField]
