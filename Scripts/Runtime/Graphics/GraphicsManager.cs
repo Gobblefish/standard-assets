@@ -28,7 +28,7 @@ namespace Gobblefish.Graphics {
         // The post processor controller.
         [SerializeField]
         private PostProcessorController m_PostProcessor;
-        public PostProcessorController PostProcessor => Instance.m_PostProcessor;
+        public static PostProcessorController PostProcessor => Instance.m_PostProcessor;
 
         protected override void Awake() {
             m_Camera = Camera.main;
