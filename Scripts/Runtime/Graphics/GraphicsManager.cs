@@ -11,45 +11,31 @@ namespace Gobblefish.Graphics {
     ///<summary>
     /// Ties the visual functionality to the rest of the game.
     ///<summary>
-    public class GraphicsManager : MonoBehaviour {
-
-        // The singleton.
-        private static GraphicsManager INSTANCE; 
+    public sealed class GraphicsManager : Manager<GraphicsManager, GraphicsSettings> {
 
         // The main camera of the game.
         private Camera m_Camera;
         public Camera MainCamera => m_Camera;
 
-        [SerializeField]
-        private GraphicsSettings m_Settings;
-        public static GraphicsSettings Settings => INSTANCE.m_Settings;
-
         // The camera movement script.
         [SerializeField]
         private CameraMovement m_CamMovement;
-        public static CameraMovement CamMovement => INSTANCE.m_CamMovement;
+        public static CameraMovement CamMovement => Instance.m_CamMovement;
         
         // The camera shake script.
         [SerializeField]
         private CameraShake m_CamShake;
-        public static CameraShake CamShake => INSTANCE.m_CamShake;
+        public static CameraShake CamShake => Instance.m_CamShake;
 
         // The post processor controller.
         [SerializeField]
         private PostProcessorController m_PostProcessor;
-        public PostProcessorController PostProcessor => m_PostProcessor;
-        public static PostProcessorController POSTPROCESSOR => INSTANCE.m_PostProcessor;
+        public PostProcessorController PostProcessor => Instance.m_PostProcessor;
 
-        public void SetSettings(GraphicsSettings settings) {
-            m_Settings = settings;
-        }
-
-        void Awake() {
-            // Application.targetFrameRate = VisualSettings.FrameRate;
-            // m_CameraController.ReshapeWindow();
-            // m_CameraController.RecolorScreen(m_DefaultPalette);
-            INSTANCE = this;
+        protected override void Awake() {
             m_Camera = Camera.main;
+            m_Settings = new GraphicsSettings();
+            base.Awake();
         }
 
     }

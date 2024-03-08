@@ -151,7 +151,7 @@ namespace Gobblefish.UI {
         }
 
         public void SetState(AudioSnippet snippet, Material material, float scale) {
-            AudioManager.SOUNDS.PlaySnippet(snippet);
+            AudioManager.Sounds.PlaySnippet(snippet);
             transform.localScale = scale * m_DefaultScale;
             if (m_Image != null) {
                 m_Image.material = material;

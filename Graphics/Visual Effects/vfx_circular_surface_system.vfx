@@ -20,7 +20,7 @@ MonoBehaviour:
     x: 149
     y: -190
     width: 1216
-    height: 1849
+    height: 1829
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -72,7 +72,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"obj":{"fileID":2800000,"guid":"b497003dec74f3c4389588907d6e2a01","type":3}}'
+      m_SerializableObject: 
     min: -Infinity
     max: Infinity
     enumValues: []
@@ -353,7 +353,7 @@ VisualEffectResource:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: vfx_circular_system
+  m_Name: vfx_circular_surface_system
   m_Graph: {fileID: 114350483966674976}
   m_Infos:
     m_RendererSettings:
@@ -2659,7 +2659,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614841}
   - {fileID: 8926484042661614842}
   m_OutputSlots: []
-  m_Disabled: 0
+  m_Disabled: 1
   repeat: 1
   spawnMode: 0
   delayMode: 0
