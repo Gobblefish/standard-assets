@@ -11,6 +11,12 @@ namespace Gobblefish.Layout {
     [System.Serializable]
     public class LayoutSnippet {
 
+        // The name of this snippet.
+        public string name;
+
+        // Whether this snippet is assigned.
+        public bool assigned => transform != null || rectTransform != null;
+
         // The transforms that this snippet takes
         public Transform transform = null;
 

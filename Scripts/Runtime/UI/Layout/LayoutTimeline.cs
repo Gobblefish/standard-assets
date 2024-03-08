@@ -12,6 +12,7 @@ namespace Gobblefish.Layout {
     /// <summary>
     /// Controls the order and manner in which the background loads.
     /// </summary>
+    [ExecuteInEditMode]
     public class LayoutTimeline : MonoBehaviour {
 
         // The duration for the loading to take.
@@ -43,9 +44,19 @@ namespace Gobblefish.Layout {
             }
         }
 
+        // Runs once every frame.
+        void Update() {
+            if (!Application.isPlaying) {
+                for (int i = 0; i < m_Snippets.Length; i++) {
+                    string name = m_Snippets[i].transform != null ? m_Snippets[i].transform.gameObject.name : (m_Snippets[i].rectTransform != null ? m_Snippets[i].rectTransform.gameObject.name : "unassigned");
+                    m_Snippets[i].name = name;
+                }
+            }
+        }
+
         // Runs once every fixed interval.
         void FixedUpdate() {
-            if (m_Playing) {
+            if (Application.isPlaying && m_Playing) {
                 Play(Time.fixedDeltaTime);
             }
         }
@@ -56,7 +67,9 @@ namespace Gobblefish.Layout {
 
             // Itterate through the snippets and animate them appropriately.
             for (int i = 0; i < m_Snippets.Length; i++) {
-                m_Snippets[i].Animate(m_Ticks, m_Duration, dt);
+                if (m_Snippets[i].assigned) {
+                    m_Snippets[i].Animate(m_Ticks, m_Duration, dt);
+                }
             }
 
             // End the animaion if necessary.
@@ -64,7 +77,9 @@ namespace Gobblefish.Layout {
                 m_Playing = false;
                 // Snap all of them to the end positions.
                 for (int i = 0; i < m_Snippets.Length; i++) {
-                    m_Snippets[i].SnapToOrigin();
+                    if (m_Snippets[i].assigned) {
+                        m_Snippets[i].SnapToOrigin();
+                    }
                 }
             }
 
