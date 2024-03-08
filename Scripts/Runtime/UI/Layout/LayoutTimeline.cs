@@ -32,6 +32,8 @@ namespace Gobblefish.Layout {
 
         // Runs once on instantiation.
         void Awake() {
+            if (!Application.isPlaying) { return; }
+
             for (int i = 0; i < m_Snippets.Length; i++) {
                 // Set the transform parameters.
                 m_Snippets[i].Validate(m_Duration);
