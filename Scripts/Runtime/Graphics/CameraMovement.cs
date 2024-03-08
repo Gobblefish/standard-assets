@@ -15,6 +15,7 @@ namespace Gobblefish.Graphics {
 
         // The distance of the plane that the camera sits on.
         public const float CAMERA_PLANE_DISTANCE = -10f;
+        public float CameraPlaneDistance => CAMERA_PLANE_DISTANCE;
         
         // The plane that this camera sits on.
         public static Vector3 CameraPlane => Vector3.forward * CAMERA_PLANE_DISTANCE;

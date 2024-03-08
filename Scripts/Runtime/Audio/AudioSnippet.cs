@@ -25,6 +25,10 @@ namespace Gobblefish.Audio {
         public void Play() {
             AudioManager.Sounds.PlaySnippet(this);
         }
+
+        public void Stop() {
+            AudioManager.Sounds.StopSound(clip);
+        }
     
     }
 
