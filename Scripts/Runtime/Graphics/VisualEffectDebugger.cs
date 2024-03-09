@@ -26,7 +26,16 @@ namespace Gobblefish.Graphics {
 
         // Runs once every fixed interval.
         void Update() {
+            if (Application.isPlaying) { 
+                enabled = false;
+                return; 
+            }
+
             m_VisualEffects = new List<VisualEffect>();
+            if (GetComponent<VisualEffect>() != null) {
+                m_VisualEffects.Add(GetComponent<VisualEffect>());
+            }
+
             foreach (Transform child in transform) {
                 VisualEffect vfx = child.GetComponent<VisualEffect>();
                 if (vfx != null) {
