@@ -12,17 +12,14 @@ namespace Gobblefish.Audio {
     public sealed class AudioManager : Manager<AudioManager, AudioSettings> {
 
         // The music being played in the game.
-        [SerializeField]
         private MusicController m_Music;
         public static MusicController Music => Instance.m_Music;
         
         // The ambience being played in the game.
-        [SerializeField]
         private MusicController m_Ambience;
         public static MusicController Ambience => Instance.m_Ambience;
 
         // The sounds being played in the game.
-        [SerializeField]
         private SoundController m_Sounds;
         public static SoundController Sounds => Instance.m_Sounds;
 
@@ -32,6 +29,9 @@ namespace Gobblefish.Audio {
 
         protected override void Awake() {
             m_Settings = new AudioSettings();
+            m_Music = new MusicController("Music", 0f, transform);
+            m_Ambience = new MusicController("Ambience", 0f, transform);
+            m_Sounds = new SoundController("Sounds", transform);
             base.Awake();
         }
 

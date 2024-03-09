@@ -8,22 +8,31 @@ using Gobblefish.Audio;
 
 namespace Gobblefish.Audio {
 
-    public class MusicController : MonoBehaviour {
+    [System.Serializable]
+    public class MusicController {
 
         // The audio source that plays the music.
-        [HideInInspector]
         private AudioSource m_Source;
 
+        // The name of this thing.
+        private string name;
+
+        // The transform to parent things to.
+        private Transform transform;
+
         // Runs once before the first frame.
-        public void Load(float volume) {
-            if (m_Source != null) { return; }
-            m_Source = GenerateSource();
+        public MusicController(string name, float volume, Transform transform) {
+            this.name = name;
+            this.transform = transform;
+            if (m_Source == null) { 
+                m_Source = GenerateSource();
+            }
             SetVolume(volume);
         }
 
         // Generates the audio source to play the music from.
         private AudioSource GenerateSource() {
-            AudioSource audioSource = new GameObject(gameObject.name + " AudioSource", typeof(AudioSource)).GetComponent<AudioSource>();
+            AudioSource audioSource = new GameObject(name + " AudioSource", typeof(AudioSource)).GetComponent<AudioSource>();
             audioSource.transform.SetParent(transform);
             audioSource.transform.localPosition = Vector3.zero;
             audioSource.loop = true;

@@ -8,7 +8,8 @@ using Gobblefish.Audio;
 
 namespace Gobblefish.Audio {
 
-    public class SoundController : MonoBehaviour {
+    [System.Serializable]
+    public class SoundController {
 
         // The default volume of a sound effect if the incoming
         // sound effect's volume is not specified.
@@ -16,29 +17,37 @@ namespace Gobblefish.Audio {
 
         // The threshold interval under which a sound is considered to have
         // just been played.
-        public const float JUST_PLAYED_INTERVAL = 0.05f;
+        public const float JUST_PLAYED_INTERVAL = 0.06f;
 
         // The number of audio sources to be generated initially.
-        public const int INITAL_SOURCE_COUNT = 15;
+        public const int INITAL_SOURCE_COUNT = 12;
 
         // The spread in pitch when playing a sound effect.
-        public const float PITCH_SPREAD = 0.025f;
+        public const float PITCH_SPREAD = 0.02f;
 
         // The audio sources that play the sounds.
-        [HideInInspector]
         private List<AudioSource> m_Sources = new List<AudioSource>();
 
+        // The name of this thing.
+        private string name;
+
+        // The transform to parent things to.
+        private Transform transform; 
+
         //
-        public void Load() {
-            if (m_Sources != null && m_Sources.Count > 0) { return; }
-            m_Sources = new List<AudioSource>();
-            GenerateSources(INITAL_SOURCE_COUNT);
+        public SoundController(string name, Transform transform) {
+            this.name = name;
+            this.transform = transform;
+            if (m_Sources == null || m_Sources.Count <= 0) { 
+                m_Sources = new List<AudioSource>();
+                GenerateSources(INITAL_SOURCE_COUNT);
+            }
         }
 
         // Generates sources to play the sound effects through.
         private void GenerateSources(int count) {
             for (int i = 0; i < count; i++) {
-                AudioSource audioSource = new GameObject("Sound AudioSource " + m_Sources.Count.ToString(), typeof(AudioSource)).GetComponent<AudioSource>();
+                AudioSource audioSource = new GameObject(name + m_Sources.Count.ToString(), typeof(AudioSource)).GetComponent<AudioSource>();
                 audioSource.transform.SetParent(transform);
                 audioSource.transform.localPosition = Vector3.zero;
                 m_Sources.Add(audioSource);
@@ -54,7 +63,7 @@ namespace Gobblefish.Audio {
         // Plays the given sound.
         public void PlaySound(AudioClip audioClip, float volume = DEFAULT_VOLUME, float pitch = 1f) {
             if (audioClip == null || m_Sources == null) { return; }
-            
+
             List<AudioSource> playing = GetPlaying(audioClip, JUST_PLAYED_INTERVAL);
         
             
@@ -73,6 +82,7 @@ namespace Gobblefish.Audio {
 
             // Skip the transient.
             audioSource.time = 0.02f;
+            audioSource.Play();
             
         }
 
