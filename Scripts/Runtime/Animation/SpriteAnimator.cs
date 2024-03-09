@@ -15,6 +15,7 @@ namespace Gobblefish.Animation {
         public Sprite[] sprites;
         public float ticks;
         private float t => (ticks * fps) % (float)sprites.Length;
+        public float duration => fps == 0f ? 0f : (float)sprites.Length / fps; 
 
         // The frame of the current animation.
         [Header("Frame")]
@@ -58,16 +59,22 @@ namespace Gobblefish.Animation {
         [SerializeField]
         private bool m_Animate = true;
 
+        [SerializeField]
+        private bool m_RandomizeInitialTick = false;
+
         // The sprite attacted to this.
         private SpriteRenderer m_SpriteRenderer;
-
-
 
         // Runs once on instantiation.
         void Start() {
             m_SpriteRenderer = GetComponent<SpriteRenderer>();
             m_Animation.SetSpriteParams(m_SpriteRenderer);
             m_SpriteRenderer.sortingOrder += m_Animation.orderOffset;
+
+            if (m_RandomizeInitialTick) {
+                m_Animation.ticks = Random.Range(0f, m_Animation.duration);
+            }
+
         }
 
         void FixedUpdate() {

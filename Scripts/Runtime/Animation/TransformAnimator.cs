@@ -119,9 +119,15 @@ namespace Gobblefish.Animation {
         [SerializeField]
         private bool m_Animate = true;
 
+        [SerializeField]
+        private bool m_RandomizeInitialTick = false;
+
         // Runs once on instantiation.
         void Start() {
             m_Animation.SetTransformParams(transform);
+            if (m_RandomizeInitialTick) {
+                m_Animation.ticks = Random.Range(0f, m_Animation.duration);
+            }
         }
 
         public void Play() {
