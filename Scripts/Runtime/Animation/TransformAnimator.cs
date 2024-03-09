@@ -126,7 +126,7 @@ namespace Gobblefish.Animation {
         void Start() {
             m_Animation.SetTransformParams(transform);
             if (m_RandomizeInitialTick) {
-                m_Animation.ticks = Random.Range(0f, m_Animation.duration);
+                m_Animation.SetTime(Random.Range(0f, m_Animation.duration));
             }
         }
 
