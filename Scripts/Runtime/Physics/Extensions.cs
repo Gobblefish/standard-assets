@@ -5,8 +5,24 @@ using System.Collections.Generic;
 // Unity.
 using UnityEngine;
 
-namespace Gobblefish.Extensions {
+namespace Gobblefish.Physics {
 
+    /// <summary>
+    /// 
+    /// </summary>
+    public static class TransformExtensions {
+
+        public static void FromMatrix(this Transform transform, Matrix4x4 matrix) {
+            transform.localScale = matrix.ExtractScale();
+            transform.rotation = matrix.ExtractRotation();
+            // transform.position = ExtractPosition(matrix);
+        }
+
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
     public static class MatrixExtensions {
 
         public static Quaternion ExtractRotation(this Matrix4x4 matrix) {

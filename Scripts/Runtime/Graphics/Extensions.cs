@@ -5,8 +5,11 @@ using System.Collections.Generic;
 // Unity.
 using UnityEngine;
 
-namespace Gobblefish.Extensions {
+namespace Gobblefish.Graphics {
 
+    /// <summary>
+    /// 
+    /// </summary>
     public static class CameraExtensions {
 
         public static Vector2 GetOrthographicDimensions(this Camera camera) {
