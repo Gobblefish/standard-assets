@@ -4,8 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 // Unity.
 using UnityEngine;
-//
-using Gobblefish.Extensions;
 
 namespace Gobblefish.Animation {
 

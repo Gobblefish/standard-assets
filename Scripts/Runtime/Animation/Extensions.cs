@@ -5,7 +5,7 @@ using System.Collections.Generic;
 // Unity.
 using UnityEngine;
 
-namespace Gobblefish.Physics {
+namespace Gobblefish.Animation {
 
     /// <summary>
     /// 

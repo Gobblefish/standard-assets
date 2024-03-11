@@ -11,12 +11,8 @@ namespace Gobblefish {
     public abstract class Settings<TSettings> where TSettings : Settings<TSettings> {
 
         public static string DirectoryPath => "/settings/";
-        public static string FilePath => DirectoryPath + GetFilePath(); 
+        public static string FilePath => DirectoryPath + typeof(TSettings).Name.ToLower() + ".json"; 
         
-        public virtual string GetFilePath() {
-            return typeof(TSettings).Name.ToLower() + ".json";
-        }
-
         void CheckDirectory() {
             if (!Directory.Exists(Application.persistentDataPath + DirectoryPath)) {
                 Directory.CreateDirectory(Application.persistentDataPath + DirectoryPath);
