@@ -11,15 +11,20 @@ namespace Gobblefish {
     public abstract class Settings<TSettings> where TSettings : Settings<TSettings> {
 
         public static string DirectoryPath => "/settings/";
-        public static string FilePath => DirectoryPath + typeof(TSettings).Name.ToLower() + ".json"; 
+
+        public string FilePath => DirectoryPath + GetFileName(); 
+
+        protected virtual string GetFileName() {
+            return typeof(TSettings).Name.ToLower() + ".json";
+        }
         
-        void CheckDirectory() {
+        private void CheckDirectory() {
             if (!Directory.Exists(Application.persistentDataPath + DirectoryPath)) {
                 Directory.CreateDirectory(Application.persistentDataPath + DirectoryPath);
             }
         }
 
-        void CheckFile() {
+        private void CheckFile() {
             if (!File.Exists(Application.persistentDataPath + FilePath)) {
                 Save();
             }
