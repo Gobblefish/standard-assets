@@ -161,8 +161,8 @@ namespace Gobblefish.Animation {
         public static void Animate(RectTransform rt, TransformAnimation animation, float dt) {
             animation.Tick(dt);
             rt.anchoredPosition = animation.GetRectPosition();
-            // transform.localRotation = animation.GetRotation();
-            // transform.localScale = animation.GetStretch();
+            rt.transform.localRotation = animation.GetRotation();
+            rt.transform.localScale = animation.GetStretch();
         }
 
         public void SnapToOrigin() {
