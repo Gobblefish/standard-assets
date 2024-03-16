@@ -38,6 +38,7 @@ namespace Gobblefish.Layout {
         // Validate the layout snippet as being formatted alright.
         public bool Validate(float timelineDuration) {
             // Check if there is a rect.
+            if (!assigned) { return false; }
             rectTransform = transform.GetComponent<RectTransform>();
 
             // Set the params.
