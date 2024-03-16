@@ -21,6 +21,7 @@ namespace Gobblefish {
 
         public static void Clean<T>(this List<T> list) {
             list = list.FindAll(item => item != null);
+        }
 
         public static void CleanObjects<TBehaviour>(this List<TBehaviour> list) where TBehaviour : MonoBehaviour {
             list = list.FindAll(item => item != null && item.gameObject != null);
