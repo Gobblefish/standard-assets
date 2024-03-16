@@ -23,11 +23,15 @@ namespace Gobblefish.Audio {
         public int priority = 0;
 
         public void Play() {
-            AudioManager.Sounds.PlaySnippet(this);
+            if (AudioManager.Instance != null) {
+                AudioManager.Sounds.PlaySnippet(this);
+            }
         }
 
         public void Stop() {
-            AudioManager.Sounds.StopSound(clip);
+            if (AudioManager.Instance != null) {
+                AudioManager.Sounds.StopSound(clip);
+            }
         }
     
     }

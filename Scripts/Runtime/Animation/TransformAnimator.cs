@@ -90,7 +90,7 @@ namespace Gobblefish.Animation {
         }
 
         public Vector3 GetStretch() {
-            return baseStretch + new Vector2(strectchScale.x * horStretchCurve.Evaluate(t), strectchScale.y * vertStretchCurve.Evaluate(t));
+            return baseStretch + new Vector2(baseStretch.x * strectchScale.x * horStretchCurve.Evaluate(t), baseStretch.y * strectchScale.y * vertStretchCurve.Evaluate(t));
         }
 
         public Vector3 GetStretch(Vector3 stretch) {
