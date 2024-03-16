@@ -19,12 +19,14 @@ namespace Gobblefish {
             return list != null && list.Count > 0;
         }
 
-        public static void Clean<T>(this List<T> list) {
+        public static List<T> Clean<T>(this List<T> list) {
             list = list.FindAll(item => item != null);
+            return list;
         }
 
-        public static void CleanObjects<TBehaviour>(this List<TBehaviour> list) where TBehaviour : MonoBehaviour {
+        public static List<TBehaviour> CleanObjects<TBehaviour>(this List<TBehaviour> list) where TBehaviour : MonoBehaviour {
             list = list.FindAll(item => item != null && item.gameObject != null);
+            return list;
         }
 
     }
