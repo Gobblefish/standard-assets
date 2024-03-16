@@ -31,13 +31,13 @@ namespace Gobblefish {
 
     public static class ComponentExtensions {
 
-        public static T GetOrAdd<T>(this MonoBehaviour mb) {
-            T t = mb.GetComponent<T>() == null;
-            if (t == null) {
-                return mb.gameObject.AddComponent<T>();
-            }
-            return t;
-        }
+        // public static T GetOrAdd<T>(this MonoBehaviour mb) {
+        //     T t = mb.GetComponent<T>() == null;
+        //     if (t == null) {
+        //         return mb.gameObject.AddComponent<T>();
+        //     }
+        //     return t;
+        // }
 
     }
 
