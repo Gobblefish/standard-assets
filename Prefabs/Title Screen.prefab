@@ -431,7 +431,8 @@ MonoBehaviour:
   m_Duration: 2
   m_Ticks: 0
   m_Snippets:
-  - transform: {fileID: 8795561189310667026}
+  - name: Title Text
+    transform: {fileID: 8795561189310667026}
     rectTransform: {fileID: 0}
     transformAnimation:
       duration: 0
@@ -483,7 +484,7 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-      baseRotation: 0
+      baseRotation: {x: 0, y: 0, z: 0, w: 0}
       rotationScale: 0
       rotationCurve:
         serializedVersion: 2
@@ -493,7 +494,8 @@ MonoBehaviour:
         m_RotationOrder: 0
     normalizedStartTime: 0.05
     normalizedEndTime: 0.3
-  - transform: {fileID: 2382262226925099292}
+  - name: Play Button
+    transform: {fileID: 2382262226925099292}
     rectTransform: {fileID: 0}
     transformAnimation:
       duration: 0
@@ -554,7 +556,7 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-      baseRotation: 0
+      baseRotation: {x: 0, y: 0, z: 0, w: 0}
       rotationScale: 0
       rotationCurve:
         serializedVersion: 2
@@ -564,7 +566,8 @@ MonoBehaviour:
         m_RotationOrder: 0
     normalizedStartTime: 0.25
     normalizedEndTime: 0.8
-  - transform: {fileID: 8795561189385330265}
+  - name: Top Left Buttons
+    transform: {fileID: 8795561189385330265}
     rectTransform: {fileID: 0}
     transformAnimation:
       duration: 0
@@ -616,7 +619,7 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-      baseRotation: 0
+      baseRotation: {x: 0, y: 0, z: 0, w: 0}
       rotationScale: 0
       rotationCurve:
         serializedVersion: 2
@@ -626,7 +629,8 @@ MonoBehaviour:
         m_RotationOrder: 0
     normalizedStartTime: 0.25
     normalizedEndTime: 0.8
-  - transform: {fileID: 8795561189422409010}
+  - name: Tagline Text
+    transform: {fileID: 8795561189422409010}
     rectTransform: {fileID: 0}
     transformAnimation:
       duration: 0
@@ -678,7 +682,7 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-      baseRotation: 0
+      baseRotation: {x: 0, y: 0, z: 0, w: 0}
       rotationScale: 0
       rotationCurve:
         serializedVersion: 2
@@ -768,7 +772,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}

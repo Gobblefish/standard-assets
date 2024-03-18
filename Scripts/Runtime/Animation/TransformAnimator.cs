@@ -176,7 +176,7 @@ namespace Gobblefish.Animation {
         }
 
         public static void SnapToOrigin(RectTransform rt, TransformAnimation animation) {
-            rt.localPosition = animation.basePosition;
+            // rt.localPosition = animation.basePosition;
             // rt.localScale = animation.baseStretch;
             // rt.localRotation = Quaternion.Euler(0f, 0f, animation.baseRotation);
         }

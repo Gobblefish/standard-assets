@@ -67,21 +67,26 @@ namespace Gobblefish.Layout {
         private void Play(float dt) {
             m_Ticks += dt;
 
+            // End the animaion if necessary.
+            if (m_Ticks >= m_Duration) {
+                m_Playing = false;
+                
+                // Snap all of them to the end positions.
+                m_Ticks = m_Ticks - 0.02f;
+                for (int i = 0; i < m_Snippets.Length; i++) {
+                    if (m_Snippets[i].assigned) {
+                        m_Snippets[i].Animate(m_Ticks, m_Duration, 0f);
+                        // m_Snippets[i].SnapToOrigin();
+                    }
+                }
+
+                return;
+            }
+
             // Itterate through the snippets and animate them appropriately.
             for (int i = 0; i < m_Snippets.Length; i++) {
                 if (m_Snippets[i].assigned) {
                     m_Snippets[i].Animate(m_Ticks, m_Duration, dt);
-                }
-            }
-
-            // End the animaion if necessary.
-            if (m_Ticks > m_Duration) {
-                m_Playing = false;
-                // Snap all of them to the end positions.
-                for (int i = 0; i < m_Snippets.Length; i++) {
-                    if (m_Snippets[i].assigned) {
-                        m_Snippets[i].SnapToOrigin();
-                    }
                 }
             }
 
