@@ -29,6 +29,9 @@ namespace Gobblefish.Input {
         private Vector2 m_MostRecent = new Vector2(0f, 0f);
         public Vector2 MostRecent => m_MostRecent.normalized;
 
+        // Whether this is zero.
+        public bool Inactive => m_Vector == Vector2.zero;
+
         // Updates this directional input.
         public void OnUpdate(Vector2 vector) {
             bool newX = vector.x != 0f && vector.x != m_Vector.x;
