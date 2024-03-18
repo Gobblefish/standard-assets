@@ -29,6 +29,15 @@ namespace Gobblefish {
             return list;
         }
 
+        public static List<TBehaviour> DestroyAppropriately<TBehaviour>(this List<TBehaviour> list) where TBehaviour : MonoBehaviour {
+            list.CleanObjects();
+            for (int i = 0; i < list.Count; i++) {
+                if (!Application.isPlaying) { DestroyImmediate(list[i].gameObject); }
+                else { Destroy(list[i].gameObject); }
+            }
+            return new List<TBehaviour>();
+        }
+
     }
 
     public static class ComponentExtensions {
