@@ -72,7 +72,7 @@ namespace Gobblefish.Layout {
                 m_Playing = false;
                 
                 // Snap all of them to the end positions.
-                m_Ticks = m_Ticks - 0.02f;
+                m_Ticks = m_Duration;
                 for (int i = 0; i < m_Snippets.Length; i++) {
                     if (m_Snippets[i].assigned) {
                         m_Snippets[i].Animate(m_Ticks, m_Duration, 0f);
