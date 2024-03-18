@@ -49,7 +49,7 @@ namespace Gobblefish {
         //     return t;
         // }
 
-        public static GameObject DestroyAppropriately(this GameObject gameObject) {
+        public static void DestroyAppropriately(this GameObject gameObject) {
             if (!Application.isPlaying) { GameObject.DestroyImmediate(gameObject); }
             else { GameObject.Destroy(gameObject); }
         }
