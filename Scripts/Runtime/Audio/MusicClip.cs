@@ -18,7 +18,9 @@ namespace Gobblefish.Audio {
         public void Play() {
             if (AudioManager.Instance == null) { return; }
             AudioManager.Music.Play(m_IntroSection);
-            //
+            for (int i = 0; i < m_Sections.Length; i++) {
+                AudioManager.Music.Queue(m_Sections[i]);
+            }
         }
 
     }

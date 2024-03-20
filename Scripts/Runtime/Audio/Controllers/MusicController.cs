@@ -12,7 +12,8 @@ namespace Gobblefish.Audio {
     public class MusicController {
 
         // The audio source that plays the music.
-        private AudioSource m_Source;
+        private List<AudioSource> m_Sources;
+        private AudioSource m_Source => m_Sources[0];
 
         // The name of this thing.
         private string name;
@@ -20,16 +21,18 @@ namespace Gobblefish.Audio {
         // The transform to parent things to.
         private Transform transform;
 
-        // The queue to play music.
-        private AudioClip[] queue;
+        // The queue time.
+        public double nextQueueTime = -1.0;
 
         // Runs once before the first frame.
         public MusicController(string name, float volume, Transform transform) {
             this.name = name;
             this.transform = transform;
-            if (m_Source == null) { 
-                m_Source = GenerateSource();
+            m_Sources = new List<AudioSource>();
+            for (int i = 0; i < 1; i++) {
+                m_Sources.Add(GenerateSource());
             }
+            nextQueueTime = -1.0;
             SetVolume(volume);
         }
 
@@ -49,65 +52,75 @@ namespace Gobblefish.Audio {
         }
 
         public void Queue(AudioClip audioClip) {
+            if (audioClip == null) { return; }
+
+            // int sourceIndex = 0;
+            //     if (!m_Sources[i].isPlaying) {
+            //         sourceIndex
+            //     }
+            // }
             
+            if (nextQueueTime == -1.0) {
+                nextQueueTime = UnityEngine.AudioSettings.dspTime;
+            }
+
+            double delay = 0.0;
+            if (m_Source.clip != null && m_Source.isPlaying) {
+                double clipLength = SamplesToDSPTime(m_Source.clip.samples);
+                double lengthPlayed = SamplesToDSPTime(m_Source.timeSamples);
+                delay = clipLength - lengthPlayed;
+            }
+
+            nextQueueTime = nextQueueTime + delay;
+            // if (delay < 1.0) {
+            m_Source.PlayScheduled(nextQueueTime);
+            // }
+            // else {
+            //     LoadQueuedClip(nextQueueTime);
+            // }
+            // currTime + delay;
         }
 
-        public void Play() {
-            m_Source.Play();
-        }
-
-        public void PlayAtSamePosition(AudioClip audioClip) {
-            int delay = m_Source.timeSamples;
-            m_Source.clip = audioClip;
-            m_Source.Play();
-            m_Source.timeSamples = delay;
-        }
-
-        public void PlayAtSameBar(AudioClip audioClip, int newBpm) {
-            
-            float time = m_Source.time;
-            float bps = this.bpm /= 60;
-
-            int beatsPerBar = 4;
-            float barDuration = bps * beatsPerBar;
-
-            float secondsOverPreviousBar = time % barDuration;
-            float secondsUntilEndOfThisBar = barDuration - secondsOverPreviousBar; 
-        
-            m_Source.clip = audioClip;
-            m_Source.Play((ulong)secondsUntilEndOfThisBar);
-
-            this.bpm = newBpm;
-        
-        }
-        private int bpm = 90;
-
-
-        public void PlayWithDelay(AudioClip audioClip, float delay) {
-            m_Source.Stop();
-            m_Source.clip = audioClip;
-            // m_Source.Play((ulong)(delay * UnityEngine.AudioSettings.outputSampleRate));
-            m_Source.PlayDelayed(delay);
-        }
-
-        // public void Stop() {
-        //     m_Source.Stop();
+        // public void LoadQueuedClip(double heldQueueTime) {
+        //     m_Source.PlayScheduled(heldQueueTime);
         // }
 
-        public bool SameAudio(AudioClip audioClip) {
-            return m_Source.clip == audioClip;
+        public void Play() {
+            // for (int i = 0; i < m_Sources.Count; i++) {
+            //     m_Sources[i].Stop();
+            // }
+            // if (m_Sources.Count > 0) {
+            //     m_Sources[0].Play();
+            // }
+            m_Source.Play();
         }
 
+        public double SamplesToDSPTime(int samples) {
+            return (double)samples / UnityEngine.AudioSettings.outputSampleRate;
+        }
+
+        // public bool SameAudio(AudioClip audioClip) {
+        //     return m_Source.clip == audioClip;
+        // }
+
         public void Pause() {
+            // for (int i = 0; i < m_Sources.Count; i++) {
+            //     m_Sources[i].Stop();
+            // }
             m_Source.Stop();
         }
 
         public void Stop() {
-            // m_Source.clip = null;
+            // for (int i = 0; i < m_Sources.Count; i++) {
+            //     m_Sources[i].Stop();
+            // }
             m_Source.Stop();
         }
 
         public void SetVolume(float volume) {
+            // for (int i = 0; i < m_Sources.Count; i++) {
+            //     m_Sources[i].volume = volume;
+            // }
             m_Source.volume = volume;
         }
 
