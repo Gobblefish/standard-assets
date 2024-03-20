@@ -13,6 +13,10 @@ namespace Gobblefish.Audio {
             AudioManager.Sounds.PlaySound(clip, volume);
         }
 
+        public static double Length(this AudioClip clip) {
+            return (double)clip.samples / clip.frequency;  
+        }
+
     }
 
 }

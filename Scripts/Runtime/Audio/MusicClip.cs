@@ -15,12 +15,20 @@ namespace Gobblefish.Audio {
         [SerializeField]
         private AudioClip[] m_Sections;
 
+        [SerializeField]
+        private int BPM;
+
+        [SerializeField]
+        private List<int> queue;
+
         public void Play() {
             if (AudioManager.Instance == null) { return; }
             AudioManager.Music.Play(m_IntroSection);
-            // for (int i = 0; i < m_Sections.Length; i++) {
-            //     AudioManager.Music.Queue(m_Sections[i]);
-            // }
+            for (int i = 0; i < queue.Count; i++) {
+                if (queue[i] < m_Sections.Length) {
+                    AudioManager.Music.Queue(m_Sections[queue[i]]);
+                }
+            }
         }
 
     }

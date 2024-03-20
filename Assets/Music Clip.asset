@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb02f09acbf8c42fd834c18e811fdb48, type: 3}
+  m_Name: Music Clip
+  m_EditorClassIdentifier: 
+  m_IntroSection: {fileID: 0}
+  m_Sections:
+  - {fileID: 0}
+  - {fileID: 0}
+  BPM: 140
+  queue: 00000000010000000100000000000000

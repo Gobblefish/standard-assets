@@ -29,7 +29,7 @@ namespace Gobblefish.Audio {
             this.name = name;
             this.transform = transform;
             m_Sources = new List<AudioSource>();
-            for (int i = 0; i < 1; i++) {
+            for (int i = 0; i < 2; i++) {
                 m_Sources.Add(GenerateSource());
             }
             nextQueueTime = -1.0;
@@ -41,19 +41,70 @@ namespace Gobblefish.Audio {
             AudioSource audioSource = new GameObject(name + " AudioSource", typeof(AudioSource)).GetComponent<AudioSource>();
             audioSource.transform.SetParent(transform);
             audioSource.transform.localPosition = Vector3.zero;
-            audioSource.loop = true;
+            audioSource.loop = false;
             audioSource.pitch = 1f;
             return audioSource;
         }
 
         public void Play(AudioClip audioClip) {
             m_Source.clip = audioClip;
-            m_Source.Play();
+            m_Source.PlayScheduled(UnityEngine.AudioSettings.dspTime);
         }
 
-        // public void Queue(AudioClip audioClip) {
+        // double nextQueueTime = 0d;
+        int queueIndex = 0;
+        List<AudioClip> queueClips = new List<AudioClip>();
+        int sourceCurrentIndex => queueIndex % m_Sources.Count;
+        int nextSourceIndex => (queueIndex + 1) % m_Sources.Count;
+
+        public void CheckQueue() {
+            if (nextQueueTime > UnityEngine.AudioSettings.dspTime) {
+                return;
+            }
+
+            if (nextQueueTime == -1.0) {
+                nextQueueTime = UnityEngine.AudioSettings.dspTime;
+            }
+
+            AudioSource currentSource = m_Sources[sourceCurrentIndex];
+            
+            double timeLeftForEndOfClip = 0d;
+            if (currentSource.clip != null && currentSource.isPlaying) {
+                double clipLength = currentSource.clip.Length();
+                double lengthPlayed = (double)currentSource.timeSamples / currentSource.clip.frequency;
+                timeLeftForEndOfClip = clipLength - lengthPlayed;
+                // Debug.Log(clipLength);
+                // Debug.Log(lengthPlayed);
+            }
+
+            if (timeLeftForEndOfClip < 1d) {
+                PlayNextInQueue(timeLeftForEndOfClip);
+            }
+
+        }
+
+        public void PlayNextInQueue(double delay) {
+            AudioSource queueSource = m_Sources[nextSourceIndex];
+            nextQueueTime = UnityEngine.AudioSettings.dspTime + delay;
+
+            queueSource.clip = queueClips[queueIndex % queueClips.Count];
+            queueSource.PlayScheduled(nextQueueTime);
+            queueIndex += 1;
+            // nextSourceQueued = true;
+        }
+
+        public void Queue(AudioClip audioClip) {
+            queueClips.Add(audioClip);
+        }
+
+        // public void _Queue(AudioClip audioClip) {
         //     if (audioClip == null) { return; }
 
+        //     AudioSource queueSource = GenerateSource();
+        //     m_Sources.Add(queueSource);
+        //     queueSource.gameObject.name = "Queue " + m_Sources.Count.ToString() + " " + queueSource.gameObject.name;
+        //     queueSource.loop = false;
+            
         //     // int sourceIndex = 0;
         //     //     if (!m_Sources[i].isPlaying) {
         //     //         sourceIndex
@@ -65,15 +116,33 @@ namespace Gobblefish.Audio {
         //     }
 
         //     double delay = 0.0;
-        //     if (m_Source.clip != null && m_Source.isPlaying) {
-        //         double clipLength = SamplesToDSPTime(m_Source.clip.samples);
-        //         double lengthPlayed = SamplesToDSPTime(m_Source.timeSamples);
+            
+        //     AudioSource prevSource = m_Sources[m_Sources.Count - 2];
+        //     prevSource.loop = false;
+        //     if (prevSource.clip != null) {
+        //         double clipLength = prevSource.clip.Length();
+        //         double lengthPlayed = (double)prevSource.timeSamples / prevSource.clip.frequency;
         //         delay = clipLength - lengthPlayed;
+        //         Debug.Log(clipLength);
+        //         Debug.Log(lengthPlayed);
         //     }
+        //     Debug.Log(delay);
 
-        //     nextQueueTime = nextQueueTime + delay;
+        //     // assuming BPM of 140 and in 4/4.
+        //     double quarterNote = 60d / 140;
+        //     double fourbars = quarterNote * 4 * 4;
+        //     double sixteenth = quarterNote / 4; 
+
+        //     Debug.Log(delay);
+        //     Debug.Log(fourbars);
+        //     Debug.Log(delay == fourbars);
+
+        //     nextQueueTime = nextQueueTime + delay; // fourbars; // delay;
         //     // if (delay < 1.0) {
-        //     m_Source.PlayScheduled(nextQueueTime);
+            
+        //     queueSource.volume = m_Source.volume;
+        //     queueSource.clip = audioClip;
+        //     queueSource.PlayScheduled(nextQueueTime);
         //     // }
         //     // else {
         //     //     LoadQueuedClip(nextQueueTime);
@@ -94,6 +163,8 @@ namespace Gobblefish.Audio {
             // }
             m_Source.Play();
         }
+
+        
 
         public double SamplesToDSPTime(int samples) {
             return (double)samples / UnityEngine.AudioSettings.outputSampleRate;
@@ -118,10 +189,10 @@ namespace Gobblefish.Audio {
         }
 
         public void SetVolume(float volume) {
-            // for (int i = 0; i < m_Sources.Count; i++) {
-            //     m_Sources[i].volume = volume;
-            // }
-            m_Source.volume = volume;
+            for (int i = 0; i < m_Sources.Count; i++) {
+                m_Sources[i].volume = volume;
+            }
+            // m_Source.volume = volume;
         }
 
     }

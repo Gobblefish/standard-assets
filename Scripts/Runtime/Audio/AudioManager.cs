@@ -37,6 +37,7 @@ namespace Gobblefish.Audio {
 
         private void Update() {
             m_Music.SetVolume(Settings.musicVolume * 0.7f * (Settings.musicMuted ? 0f : 1f));
+            m_Music.CheckQueue();
             m_Ambience.SetVolume(Settings.ambienceVolume * 0.3f * (Settings.ambienceMuted ? 0f : 1f));
         }
 
