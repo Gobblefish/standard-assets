@@ -20,6 +20,9 @@ namespace Gobblefish.Audio {
         // The transform to parent things to.
         private Transform transform;
 
+        // The queue to play music.
+        private AudioClip[] queue;
+
         // Runs once before the first frame.
         public MusicController(string name, float volume, Transform transform) {
             this.name = name;
@@ -35,7 +38,7 @@ namespace Gobblefish.Audio {
             AudioSource audioSource = new GameObject(name + " AudioSource", typeof(AudioSource)).GetComponent<AudioSource>();
             audioSource.transform.SetParent(transform);
             audioSource.transform.localPosition = Vector3.zero;
-            audioSource.loop = true;
+            audioSource.loop = false;
             audioSource.pitch = 1f;
             return audioSource;
         }
@@ -43,6 +46,10 @@ namespace Gobblefish.Audio {
         public void Play(AudioClip audioClip) {
             m_Source.clip = audioClip;
             m_Source.Play();
+        }
+
+        public void Queue(AudioClip audioClip) {
+            
         }
 
         public void Play() {
