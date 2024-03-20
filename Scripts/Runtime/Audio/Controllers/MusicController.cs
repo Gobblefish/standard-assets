@@ -41,7 +41,7 @@ namespace Gobblefish.Audio {
             AudioSource audioSource = new GameObject(name + " AudioSource", typeof(AudioSource)).GetComponent<AudioSource>();
             audioSource.transform.SetParent(transform);
             audioSource.transform.localPosition = Vector3.zero;
-            audioSource.loop = false;
+            audioSource.loop = true;
             audioSource.pitch = 1f;
             return audioSource;
         }
@@ -51,35 +51,35 @@ namespace Gobblefish.Audio {
             m_Source.Play();
         }
 
-        public void Queue(AudioClip audioClip) {
-            if (audioClip == null) { return; }
+        // public void Queue(AudioClip audioClip) {
+        //     if (audioClip == null) { return; }
 
-            // int sourceIndex = 0;
-            //     if (!m_Sources[i].isPlaying) {
-            //         sourceIndex
-            //     }
-            // }
+        //     // int sourceIndex = 0;
+        //     //     if (!m_Sources[i].isPlaying) {
+        //     //         sourceIndex
+        //     //     }
+        //     // }
             
-            if (nextQueueTime == -1.0) {
-                nextQueueTime = UnityEngine.AudioSettings.dspTime;
-            }
+        //     if (nextQueueTime == -1.0) {
+        //         nextQueueTime = UnityEngine.AudioSettings.dspTime;
+        //     }
 
-            double delay = 0.0;
-            if (m_Source.clip != null && m_Source.isPlaying) {
-                double clipLength = SamplesToDSPTime(m_Source.clip.samples);
-                double lengthPlayed = SamplesToDSPTime(m_Source.timeSamples);
-                delay = clipLength - lengthPlayed;
-            }
+        //     double delay = 0.0;
+        //     if (m_Source.clip != null && m_Source.isPlaying) {
+        //         double clipLength = SamplesToDSPTime(m_Source.clip.samples);
+        //         double lengthPlayed = SamplesToDSPTime(m_Source.timeSamples);
+        //         delay = clipLength - lengthPlayed;
+        //     }
 
-            nextQueueTime = nextQueueTime + delay;
-            // if (delay < 1.0) {
-            m_Source.PlayScheduled(nextQueueTime);
-            // }
-            // else {
-            //     LoadQueuedClip(nextQueueTime);
-            // }
-            // currTime + delay;
-        }
+        //     nextQueueTime = nextQueueTime + delay;
+        //     // if (delay < 1.0) {
+        //     m_Source.PlayScheduled(nextQueueTime);
+        //     // }
+        //     // else {
+        //     //     LoadQueuedClip(nextQueueTime);
+        //     // }
+        //     // currTime + delay;
+        // }
 
         // public void LoadQueuedClip(double heldQueueTime) {
         //     m_Source.PlayScheduled(heldQueueTime);

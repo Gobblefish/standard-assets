@@ -6,7 +6,8 @@ namespace Gobblefish.Audio {
     /// <summary>
     /// An easy component to be able to control the volume of a clip.
     /// </summary>
-    public class AudioSnippetCollection : MonoBehaviour {
+    [CreateAssetMenu(fileName="AudioSnippetCollection", menuName="AudioSnippetCollection")]
+    public class AudioSnippetCollection : ScriptableObject {
 
         [SerializeField]
         private AudioSnippet[] m_Snippets;
