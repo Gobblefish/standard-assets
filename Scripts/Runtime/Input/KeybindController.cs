@@ -108,17 +108,11 @@ namespace Gobblefish.Input {
 
         public void ReassignKey(KeyCode key) {
             m_Key = key;
-
-            // The guys wan
             m_TextMesh.text = m_Key.ToString();
-            // m_Textbox.SetWord(m_Key.ToString());
-            // m_Textbox.SetSortingLayer(m_SpriteRenderer.sortingLayerName, m_SpriteRenderer.sortingOrder + 5);
-
             // Set the new key.
             // if (m_InputMovementIndex < Game.Input.Settings.movement.Length) {
             //     Game.Input.Settings.movement[m_InputMovementIndex] = m_Key;
             // }
-
         }
 
     }
