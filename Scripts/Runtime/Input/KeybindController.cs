@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 // Unity.
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 // Gobblefish.
@@ -33,12 +34,20 @@ namespace Gobblefish.Input {
         [SerializeField]
         private TextMeshProUGUI m_TextMesh;
 
+        [SerializeField]
+        private Image m_Image;
+
         // The keybind collection that this is a part of.
         protected KeybindCollection m_KeybindCollection;
 
+        [SerializeField]
+        private UnityEvent m_OnActivate = new UnityEvent();
+
+        [SerializeField]
+        private UnityEvent m_OnDeactivate = new UnityEvent();
+
         // Runs once before the first frame.
         void Start() {
-            m_DefaultMaterial = m_Image.material;
             m_Image.transform.SetParent(transform.parent);
         }
 
@@ -79,9 +88,12 @@ namespace Gobblefish.Input {
         public void SetActive(bool active) {
             if (active) {
                 DisableAllOthers();
+                m_OnActivate.Invoke();
+            }
+            else {
+                m_OnDeactivate.Invoke();
             }
             m_Active = active;
-            m_Image.material = m_Active ? m_ActiveMaterial : m_DefaultMaterial;
         }
 
         public void DisableAllOthers() {
@@ -124,10 +136,6 @@ namespace Gobblefish.Input {
             }
             keyCodes[m_KeyIndex] = key;
             m_TextMesh.text = Key.ToString();
-            // Set the new key.
-            // if (m_InputMovementIndex < Game.Input.Settings.movement.Length) {
-            //     Game.Input.Settings.movement[m_InputMovementIndex] = m_Key;
-            // }
         }
 
     }
