@@ -22,13 +22,13 @@ namespace Gobblefish.Audio {
             switch (m_Type) {
                 case AudioType.Sound:
                     AudioManager.Settings.soundVolume = value;
-                    return;
+                    break;
                 case AudioType.Ambience:
                     AudioManager.Settings.ambienceVolume = value;
-                    return;
+                    break;
                 case AudioType.Music:
                     AudioManager.Settings.musicVolume = value;
-                    return;
+                    break;
             }
             AudioManager.Settings.Save();
         }
