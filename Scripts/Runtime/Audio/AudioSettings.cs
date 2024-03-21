@@ -24,7 +24,6 @@ namespace Gobblefish.Audio {
         // Sound Volume.
         public float soundVolume;
         public bool soundMuted;
-
         
     }
 

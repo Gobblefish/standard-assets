@@ -30,12 +30,12 @@ namespace Blobbers {
 
         // The event to trigger when the value is changed.
         [SerializeField]
-        private UnityEvent m_OnValueChange = new UnityEvent();
+        private UnityEvent<float> m_OnValueChange = new UnityEvent<float>();
 
         public void SetValue(float value) {
             m_Value = value; 
             SetDraggedPosition(m_Value);
-            m_OnValueChange.Invoke();
+            m_OnValueChange.Invoke(m_Value);
         }
 
         public void OnBeginDrag(PointerEventData eventData) {
@@ -88,7 +88,7 @@ namespace Blobbers {
             rt.position = new Vector3(worldPos.x, rt.position.y, rt.position.z);
 
             m_Value = (worldPos.x - leftBound) / (rightBound - leftBound);
-            m_OnValueChange.Invoke();
+            m_OnValueChange.Invoke(m_Value);
 
         }
 

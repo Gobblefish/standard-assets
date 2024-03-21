@@ -40,12 +40,6 @@ namespace Gobblefish.UI {
         private Material m_HoverMaterial;
 
         [SerializeField]
-        private AudioSnippet m_OnClickAudio;
-
-        [SerializeField]
-        private AudioSnippet m_OnEnterAudio;
-
-        [SerializeField]
         private AudioSnippet m_OnExitAudio;
 
         // The event triggered when this button is clicked.
@@ -93,7 +87,7 @@ namespace Gobblefish.UI {
 
         void OnEnable() {
             if (m_DefaultMaterial != null) {
-                SetState(null, m_DefaultMaterial, 1f);
+                SetState(m_DefaultMaterial, 1f);
                 m_Clicking = false;
             }
         }
@@ -102,7 +96,7 @@ namespace Gobblefish.UI {
         public void OnPointerClick(PointerEventData pointerEventData) {
             if (pointerEventData.button == PointerEventData.InputButton.Left && !m_Clicking) {
                 
-                SetState(m_OnClickAudio, m_ClickMaterial, m_ClickScale);
+                SetState(m_ClickMaterial, m_ClickScale);
                 StartCoroutine(IEClick());
                 m_Clicking = true;
 
@@ -114,10 +108,10 @@ namespace Gobblefish.UI {
             yield return new WaitForSeconds(CLICK_DURATION);
             
             if (m_MouseOver) {
-                SetState(null, m_HoverMaterial, m_HoverScale);
+                SetState(m_HoverMaterial, m_HoverScale);
             }
             else {
-                SetState(null, m_DefaultMaterial, 1f);
+                SetState(m_DefaultMaterial, 1f);
             }
             m_Clicking = false;
             m_OnClick.Invoke();
@@ -129,7 +123,7 @@ namespace Gobblefish.UI {
             if (pointerEventData == null || pointerEventData.pointerEnter == null) { return; }
 
             if (!m_Clicking) {
-                SetState(m_OnEnterAudio, m_HoverMaterial, m_HoverScale);
+                SetState(m_HoverMaterial, m_HoverScale);
             }
             if (!m_MouseOver) {
                 m_OnEnter.Invoke();
@@ -142,7 +136,7 @@ namespace Gobblefish.UI {
             if (pointerEventData == null || pointerEventData.pointerEnter == null) { return; }
 
             if (!m_Clicking) {
-                SetState(m_OnExitAudio, m_DefaultMaterial, 1f);
+                SetState(m_DefaultMaterial, 1f);
             }
             if (!m_MouseOver) {
                 m_OnExit.Invoke();
@@ -150,8 +144,7 @@ namespace Gobblefish.UI {
             m_MouseOver = false;
         }
 
-        public void SetState(AudioSnippet snippet, Material material, float scale) {
-            if (snippet != null && snippet.clip != null) { snippet.Play(); }
+        public void SetState(Material material, float scale) {
             transform.localScale = scale * m_DefaultScale;
             if (m_Image != null && material) {
                 m_Image.material = material;
