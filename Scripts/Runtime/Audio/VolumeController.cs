@@ -30,6 +30,7 @@ namespace Gobblefish.Audio {
                     AudioManager.Settings.musicVolume = value;
                     return;
             }
+            m_AudioManager.Settings.Save();
         }
     
     }
