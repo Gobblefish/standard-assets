@@ -57,7 +57,7 @@ namespace Gobblefish.Audio {
 
         // Checks the audio queue.
         public void CheckQueue() {
-            if (nextQueueTime > UnityEngine.AudioSettings.dspTime) {
+            if (queueClips.Count == 0 || nextQueueTime > UnityEngine.AudioSettings.dspTime) {
                 return;
             }
 

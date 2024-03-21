@@ -21,17 +21,17 @@ namespace Gobblefish.Input {
         public const float RELEASE_BUFFER = 0.08f;
 
         [SerializeField] 
-        private float m_PressedTicks;
+        private float m_PressedTicks = 0f;
         
         [SerializeField] 
-        private float m_ReleasedTicks;
+        private float m_ReleasedTicks = 0f;
 
         // Swaps the state of this action input.
         [SerializeField] 
-        private bool m_Held;
+        private bool m_Held = false;
         
         [SerializeField] 
-        private float m_HeldTicks;
+        private float m_HeldTicks = 0f;
         
         // The useable information from this action's state.
         public bool Pressed => m_PressedTicks > 0f;
@@ -39,6 +39,13 @@ namespace Gobblefish.Input {
         public bool Released => m_ReleasedTicks > 0f;
         
         #endregion
+
+        public ActionInput() {
+            m_PressedTicks = 0f;
+            m_ReleasedTicks = 0f;
+            m_Held = false;
+            m_HeldTicks = 0f;
+        }
 
         // Updates this action input.
         public void OnUpdate(bool press, bool release, float dt) {

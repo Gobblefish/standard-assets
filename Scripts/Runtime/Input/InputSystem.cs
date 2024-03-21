@@ -21,6 +21,19 @@ namespace Gobblefish.Input {
         protected ActionInput[] m_Actions;
         public ActionInput[] Actions => m_Actions;
 
+        protected override void Awake() {
+            m_Settings = new InputSettings();
+            base.Awake();
+            CreateInputs();
+        }
+
+        protected virtual void CreateInputs() {
+            m_Actions = new ActionInput[Settings.actionKeybinds.Length];
+            for (int i = 0; i < m_Actions.Length; i++) {
+                m_Actions[i] = new ActionInput();
+            }
+        }
+
         // Runs once every frame.
         void Update() {
             Think(Time.deltaTime);

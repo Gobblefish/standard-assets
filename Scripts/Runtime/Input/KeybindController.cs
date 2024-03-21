@@ -12,31 +12,29 @@ namespace Gobblefish.Input {
 
     public class KeybindController : MonoBehaviour {
 
+        public enum KeybindType {
+            Direction,
+            Action,
+        }
+
+        //
+        [SerializeField]
+        private KeybindType m_Type = KeybindType.Direction;
+
         // If the controller is actively being assigned.
         [SerializeField]
         private bool m_Active = false;
 
         // The keycode of this keybind.
         [SerializeField]
-        private KeyCode m_Key;
-        public KeyCode Key => m_Key;
+        private int m_KeyIndex;
+        private KeyCode Key => GetKeybind();
 
         [SerializeField]
         private TextMeshProUGUI m_TextMesh;
 
         // The keybind collection that this is a part of.
         protected KeybindCollection m_KeybindCollection;
-
-        // The image to indicate whether this keybind is active.
-        [SerializeField]
-        private Image m_Image;
-
-        // The material for the backgrond
-        [SerializeField]
-        private Material m_ActiveMaterial;
-
-        // The default material for the background.
-        private Material m_DefaultMaterial;
 
         // Runs once before the first frame.
         void Start() {
@@ -56,7 +54,20 @@ namespace Gobblefish.Input {
         // }
 
         public KeyCode GetKeybind() {
-            return KeyCode.None;
+            if (InputSystem.Instance == null) { return KeyCode.None; }
+            KeyCode[] keyCodes = GetArray();
+            if (keyCodes == null || m_KeyIndex < 0 || m_KeyIndex >= keyCodes.Length) {
+                return KeyCode.None;
+            }
+            return keyCodes[m_KeyIndex];
+        }
+
+        public KeyCode[] GetArray() {
+            return m_Type switch {
+                KeybindType.Direction => InputSystem.Settings.directionKeybinds,
+                KeybindType.Action => InputSystem.Settings.actionKeybinds,
+                _ => null
+            };
         }
 
         void Update() {
@@ -89,12 +100,12 @@ namespace Gobblefish.Input {
             }
 
             // Input.inputString stores all keys pressed.
-            KeyCode originalKey = m_Key;
+            KeyCode originalKey = Key;
             ReassignKey((KeyCode)UnityEngine.Input.inputString[0]);
 
             // Check all the other keybinds in case they have the same key.
             for (int i = 0; i < m_KeybindCollection.Keybinds.Count; i++) {
-                if (m_KeybindCollection.Keybinds[i] != this && m_KeybindCollection.Keybinds[i].Key == m_Key && m_Key != KeyCode.None) {
+                if (m_KeybindCollection.Keybinds[i] != this && m_KeybindCollection.Keybinds[i].Key == Key && Key != KeyCode.None) {
                     m_KeybindCollection.Keybinds[i].ReassignKey(KeyCode.None);
                 }
             }
@@ -107,8 +118,12 @@ namespace Gobblefish.Input {
         }
 
         public void ReassignKey(KeyCode key) {
-            m_Key = key;
-            m_TextMesh.text = m_Key.ToString();
+            KeyCode[] keyCodes = GetArray();
+            if (keyCodes == null || m_KeyIndex < 0 || m_KeyIndex >= keyCodes.Length) {
+                return;
+            }
+            keyCodes[m_KeyIndex] = key;
+            m_TextMesh.text = Key.ToString();
             // Set the new key.
             // if (m_InputMovementIndex < Game.Input.Settings.movement.Length) {
             //     Game.Input.Settings.movement[m_InputMovementIndex] = m_Key;

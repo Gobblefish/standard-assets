@@ -386,8 +386,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b628eff3f0cf284da3563306876e679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Type: 0
   m_Active: 0
-  m_Key: 0
+  m_KeyIndex: 0
   m_TextMesh: {fileID: 2456403988558380199}
   m_Image: {fileID: 705560748467294097}
   m_ActiveMaterial: {fileID: 2100000, guid: dd3e2715a1de77c40991c7a3ec8e69db, type: 2}

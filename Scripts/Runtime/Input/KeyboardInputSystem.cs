@@ -23,8 +23,16 @@ namespace Gobblefish.Input {
         protected ActionInput[] m_DirectionActions;
 
         // Action Input Keybinds.
-        [SerializeField] 
-        private KeyCode[] m_ActionKeybinds;
+        // [SerializeField] 
+        // private KeyCode[] m_ActionKeybinds;
+
+        protected override void CreateInputs() {
+            base.CreateInputs();
+            m_DirectionActions = new ActionInput[Settings.directionKeybinds.Length];
+            for (int i = 0; i < m_DirectionActions.Length; i++) {
+                m_DirectionActions[i] = new ActionInput();
+            }
+        }
 
         // Updates the inputs.
         protected override void Think(float dt) {
@@ -65,17 +73,17 @@ namespace Gobblefish.Input {
             return UnityEngine.Input.GetKeyUp(keyCode);
         }
 
-        public void SetDirectionKeybind(int directionIndex, KeyCode keyCode) {
-            if (directionIndex >= 0 && directionIndex < Settings.directionKeybinds.Length) {
-                Settings.directionKeybinds[directionIndex] = keyCode;
-            }
-        }
+        // public void SetDirectionKeybind(int directionIndex, KeyCode keyCode) {
+        //     if (directionIndex >= 0 && directionIndex < Settings.directionKeybinds.Length) {
+        //         Settings.directionKeybinds[directionIndex] = keyCode;
+        //     }
+        // }
 
-        public void SetActionKeybind(int actionIndex, KeyCode keyCode) {
-            if (actionIndex >= 0 && actionIndex < Settings.actionKeybinds.Length) {
-                Settings.actionKeybinds[actionIndex] = keyCode;
-            }
-        }
+        // public void SetActionKeybind(int actionIndex, KeyCode keyCode) {
+        //     if (actionIndex >= 0 && actionIndex < Settings.actionKeybinds.Length) {
+        //         Settings.actionKeybinds[actionIndex] = keyCode;
+        //     }
+        // }
 
     }
 
