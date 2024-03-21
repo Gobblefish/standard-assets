@@ -49,6 +49,7 @@ namespace Gobblefish.Input {
         // Runs once before the first frame.
         void Start() {
             m_Image.transform.SetParent(transform.parent);
+            m_TextMesh.text = Key.ToString();
         }
 
         // Set the keybind group that this is a part of.
@@ -135,6 +136,7 @@ namespace Gobblefish.Input {
                 return;
             }
             keyCodes[m_KeyIndex] = key;
+            InputSystem.Settings.Save();
             m_TextMesh.text = Key.ToString();
         }
 
