@@ -15,20 +15,30 @@ namespace Gobblefish.UI {
     public class Slider : MonoBehaviour, 
         IBeginDragHandler, 
         IDragHandler, 
-        IEndDragHandler {
+        IEndDragHandler,
+        IPointerDownHandler, 
+        IPointerUpHandler,
+        IPointerEnterHandler,
+        IPointerExitHandler {
 
         [SerializeField]
         private UIEventController m_UIEventController = null;
 
         [SerializeField]
         private GameObject m_Node;
-        public GameObject node => node;
+        public GameObject node => m_Node;
         
         [SerializeField]
         private RectTransform m_Bar;
 
         [SerializeField]
         private float m_Value;
+
+        // Controls whether the button is currently going through the click cycle.
+        private bool m_Dragging = false;
+
+        // Controls whether the button is currently going through the click cycle.
+        private bool m_MouseOver = false;
 
         // The event to trigger when the value is changed.
         [SerializeField]
@@ -50,7 +60,6 @@ namespace Gobblefish.UI {
 
         public void OnBeginDrag(PointerEventData eventData) {
             m_OnBeginDrag.Invoke();
-            m_UIEventController.InvokeUISliderEvent(this, UIEventEnum.OnClick);
             SetDraggedPosition(eventData);
         }
 
@@ -105,8 +114,52 @@ namespace Gobblefish.UI {
         }
 
         public void OnEndDrag(PointerEventData eventData) {
-            m_UIEventController.InvokeUISliderEvent(this, UIEventEnum.OnIdle);
+            if (m_MouseOver) {
+                m_UIEventController.InvokeUISliderEvent(this, UIEventEnum.OnHover);
+            }
+            else {
+                m_UIEventController.InvokeUISliderEvent(this, UIEventEnum.OnIdle);
+            }
             m_OnEndDrag.Invoke();
+        }
+
+        // Detect if the Cursor clicks on this GameObject
+        public void OnPointerDown(PointerEventData pointerEventData) {
+            if (pointerEventData.button == PointerEventData.InputButton.Left && !m_Dragging) {
+                m_UIEventController.InvokeUISliderEvent(this, UIEventEnum.OnClick);
+                m_Dragging = true;
+            }
+        }
+
+        // Detect if the Cursor clicks on this GameObject
+        public void OnPointerUp(PointerEventData pointerEventData) {
+            m_Dragging = false;
+            if (m_MouseOver) {
+                m_UIEventController.InvokeUISliderEvent(this, UIEventEnum.OnHover);
+            }
+            else {
+                m_UIEventController.InvokeUISliderEvent(this, UIEventEnum.OnIdle);
+            }
+        }
+
+        // Detect if the Cursor starts to pass over the GameObject
+        public void OnPointerEnter(PointerEventData pointerEventData) {
+            if (pointerEventData == null || pointerEventData.pointerEnter == null) { return; }
+
+            if (!m_Dragging && !m_MouseOver) {
+                m_UIEventController.InvokeUISliderEvent(this, UIEventEnum.OnHover);
+            }
+            m_MouseOver = true;
+        }
+
+        // Detect when Cursor leaves the GameObject
+        public void OnPointerExit(PointerEventData pointerEventData) {
+            if (pointerEventData == null || pointerEventData.pointerEnter == null) { return; }
+
+            if (!m_Dragging && m_MouseOver) {
+                m_UIEventController.InvokeUISliderEvent(this, UIEventEnum.OnIdle);
+            }
+            m_MouseOver = false;
         }
 
     }
