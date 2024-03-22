@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb02f09acbf8c42fd834c18e811fdb48, type: 3}
-  m_Name: Music Clip
+  m_Name: Test Music Sample
   m_EditorClassIdentifier: 
   m_IntroSection: {fileID: 0}
   m_Sections:

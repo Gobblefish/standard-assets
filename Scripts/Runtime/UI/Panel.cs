@@ -18,6 +18,8 @@ namespace Gobblefish.UI {
     public class Panel : MonoBehaviour {
 
         public void Open() {
+            if (gameObject == null) { Debug.Log("Doesn't have a game object"); }
+
             transform.SetParent(null);
             gameObject.SetActive(true);
         }

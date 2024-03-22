@@ -123,10 +123,8 @@ namespace Gobblefish.Input {
                 }
             }
 
-            // Game.Audio.Sounds.PlaySound(m_OnSetSound);
             SetActive(false);
-
-            // Debug.Log("Reassigned key '" + originalKey + "' to key '" + m_Key + "'");
+            Debug.Log("Reassigned key '" + originalKey + "' to key '" + Key + "'");
         
         }
 

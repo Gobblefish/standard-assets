@@ -6,8 +6,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
-// Gobblefish
-using Gobblefish.Audio;
 
 namespace Gobblefish.UI {
 
@@ -16,31 +14,22 @@ namespace Gobblefish.UI {
         IPointerEnterHandler,
         IPointerExitHandler {
 
-        // The scale that the selector becomes on hover. 
         [SerializeField]
-        private float m_HoverScale = 1.1f;
+        private UIEventController m_UIEventController = null;
 
-        // The scale that the selector becomes on hover. 
         [SerializeField]
-        private float m_ClickScale = 0.9f;
-
-        // The scale that this selector is by default. 
-        private Vector3 m_DefaultScale;
-
-        // The default material for this button.
-        private Material m_DefaultMaterial;
+        protected bool m_MouseOver = false;
 
         // The duration for which a click is processed.
         public const float CLICK_DURATION = 0.03f;
 
-        [SerializeField]
-        private Material m_ClickMaterial;
+        // The scale that this selector is by default. 
+        private Vector3 m_DefaultScale;
+        public Vector3 defaultScale => m_DefaultScale;
 
-        [SerializeField]
-        private Material m_HoverMaterial;
-
-        [SerializeField]
-        private AudioSnippet m_OnExitAudio;
+        // The default material for this button.
+        private Material m_DefaultMaterial;
+        public Material defaultMaterial => m_DefaultMaterial;
 
         // The event triggered when this button is clicked.
         public UnityEvent m_OnClick = new UnityEvent();
@@ -51,20 +40,20 @@ namespace Gobblefish.UI {
         // The event triggered when this button is clicked.
         public UnityEvent m_OnExit = new UnityEvent();
 
-        [SerializeField]
-        protected bool m_MouseOver = false;
-
         // Controls whether the button is currently going through the click cycle.
         private bool m_Clicking = false;
 
         // The image attached to this component.
         private Image m_Image;
+        public Image image => m_Image;
 
         // The image attached to this component.
         private SpriteRenderer m_SpriteRenderer;
+        public SpriteRenderer spriteRenderer => m_SpriteRenderer;
 
         // Runs once at the before the first frame. 
         void Start() {
+            // Get all the default parameters.
             m_SpriteRenderer = GetComponent<SpriteRenderer>();
             m_Image = GetComponent<Image>();
             m_DefaultScale = transform.localScale;
@@ -80,14 +69,11 @@ namespace Gobblefish.UI {
             if (rt != null) {
                 rt.pivot = new Vector2(0.5f, 0.5f);
             }
-
-            // m_SpriteRenderer.transform.localScale = DEFAULT_SCALE * new Vector3(1f, 1f, 1f);
-            // m_SpriteRenderer.sprite = m_IdleSprite;
         }
 
         void OnEnable() {
             if (m_DefaultMaterial != null) {
-                SetState(m_DefaultMaterial, 1f);
+                m_UIEventController.InvokeUIEvent(this, UIEventEnum.OnIdle);
                 m_Clicking = false;
             }
         }
@@ -96,7 +82,7 @@ namespace Gobblefish.UI {
         public void OnPointerClick(PointerEventData pointerEventData) {
             if (pointerEventData.button == PointerEventData.InputButton.Left && !m_Clicking) {
                 
-                SetState(m_ClickMaterial, m_ClickScale);
+                m_UIEventController.InvokeUIEvent(this, UIEventEnum.OnClick);
                 StartCoroutine(IEClick());
                 m_Clicking = true;
 
@@ -104,14 +90,15 @@ namespace Gobblefish.UI {
             }
         }
 
+        // Triggers the actual click event a short duration after the actual click.
         private IEnumerator IEClick() {
             yield return new WaitForSeconds(CLICK_DURATION);
             
             if (m_MouseOver) {
-                SetState(m_HoverMaterial, m_HoverScale);
+                m_UIEventController.InvokeUIEvent(this, UIEventEnum.OnHover);
             }
             else {
-                SetState(m_DefaultMaterial, 1f);
+                m_UIEventController.InvokeUIEvent(this, UIEventEnum.OnIdle);
             }
             m_Clicking = false;
             m_OnClick.Invoke();
@@ -122,8 +109,8 @@ namespace Gobblefish.UI {
         public void OnPointerEnter(PointerEventData pointerEventData) {
             if (pointerEventData == null || pointerEventData.pointerEnter == null) { return; }
 
-            if (!m_Clicking) {
-                SetState(m_HoverMaterial, m_HoverScale);
+            if (!m_Clicking && !m_MouseOver) {
+                m_UIEventController.InvokeUIEvent(this, UIEventEnum.OnHover);
             }
             if (!m_MouseOver) {
                 m_OnEnter.Invoke();
@@ -135,23 +122,13 @@ namespace Gobblefish.UI {
         public void OnPointerExit(PointerEventData pointerEventData) {
             if (pointerEventData == null || pointerEventData.pointerEnter == null) { return; }
 
-            if (!m_Clicking) {
-                SetState(m_DefaultMaterial, 1f);
+            if (!m_Clicking && m_MouseOver) {
+                m_UIEventController.InvokeUIEvent(this, UIEventEnum.OnIdle);
             }
-            if (!m_MouseOver) {
+            if (m_MouseOver) {
                 m_OnExit.Invoke();
             }
             m_MouseOver = false;
-        }
-
-        public void SetState(Material material, float scale) {
-            transform.localScale = scale * m_DefaultScale;
-            if (m_Image != null && material) {
-                m_Image.material = material;
-            }
-            if (m_SpriteRenderer != null) {
-                m_SpriteRenderer.sharedMaterial = material;
-            }
         }
 
     }

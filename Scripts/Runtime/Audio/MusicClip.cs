@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Gobblefish.Audio {
 
-    [CreateAssetMenu(fileName="Music Clip", menuName="Music Clip")]
+    [CreateAssetMenu(fileName="MusicClip", menuName="MusicClip")]
     public class MusicClip : ScriptableObject {
 
         [SerializeField]

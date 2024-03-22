@@ -6,10 +6,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
-// Gobblefish
-using Gobblefish.Audio;
 
-namespace Blobbers {
+namespace Gobblefish.UI {
 
     ///<summary>
     /// 
@@ -20,7 +18,13 @@ namespace Blobbers {
         IEndDragHandler {
 
         [SerializeField]
+        private UIEventController m_UIEventController = null;
+
+        [SerializeField]
         private GameObject m_Node;
+        public GameObject node => node;
+        private Vector3 m_NodeDefaultScale;
+        public Vector3 nodeDefaultScale => m_NodeDefaultScale;
         
         [SerializeField]
         private RectTransform m_Bar;
@@ -32,6 +36,18 @@ namespace Blobbers {
         [SerializeField]
         private UnityEvent<float> m_OnValueChange = new UnityEvent<float>();
 
+        // The event to trigger when the value is changed.
+        [SerializeField]
+        private UnityEvent m_OnBeginDrag = new UnityEvent();
+
+        // The event to trigger when the value is changed.
+        [SerializeField]
+        private UnityEvent m_OnEndDrag = new UnityEvent();
+
+        void Start() {
+            m_NodeDefaultScale = m_Node.transform.localScale;
+        }
+
         public void SetValue(float value) {
             m_Value = value; 
             SetDraggedPosition(m_Value);
@@ -39,11 +55,13 @@ namespace Blobbers {
         }
 
         public void OnBeginDrag(PointerEventData eventData) {
+            m_OnBeginDrag.Invoke();
+            m_UIEventController.InvokeUIEvent(this, UIEventEnum.OnClick);
             SetDraggedPosition(eventData);
         }
 
-        public void OnDrag(PointerEventData data) {
-            SetDraggedPosition(data);
+        public void OnDrag(PointerEventData eventData) {
+            SetDraggedPosition(eventData);
         }
 
         private void SetDraggedPosition(float value) {
@@ -67,7 +85,7 @@ namespace Blobbers {
 
         }
 
-        private void SetDraggedPosition(PointerEventData data) {
+        private void SetDraggedPosition(PointerEventData eventData) {
 
             var rt = m_Node.GetComponent<RectTransform>();
             
@@ -77,7 +95,7 @@ namespace Blobbers {
             float leftBound = v[0].x;
             float rightBound = v[3].x;
             
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(data.position);
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(eventData.position);
             if (worldPos.x < leftBound) {
                 worldPos.x = leftBound;
             }
@@ -93,7 +111,8 @@ namespace Blobbers {
         }
 
         public void OnEndDrag(PointerEventData eventData) {
-
+            m_UIEventController.InvokeUIEvent(this, UIEventEnum.OnIdle);
+            m_OnEndDrag.Invoke();
         }
 
     }
