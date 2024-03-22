@@ -41,6 +41,9 @@ namespace Gobblefish.Input {
         protected KeybindCollection m_KeybindCollection;
 
         [SerializeField]
+        private UnityEvent m_OnReassignKey = new UnityEvent();
+
+        [SerializeField]
         private UnityEvent m_OnActivate = new UnityEvent();
 
         [SerializeField]
@@ -56,12 +59,6 @@ namespace Gobblefish.Input {
         public void SetKeybindGroup(KeybindCollection keybinds) {
             m_KeybindCollection = keybinds;
         }
-
-        // void Start() {
-        //     m_Key = GetKeybind();
-        //     m_Textbox.SetWord(m_Key.ToString());
-        //     m_Textbox.SetSortingLayer(m_SpriteRenderer.sortingLayerName, m_SpriteRenderer.sortingOrder + 5);
-        // }
 
         public KeyCode GetKeybind() {
             if (InputSystem.Instance == null) { return KeyCode.None; }
@@ -136,6 +133,8 @@ namespace Gobblefish.Input {
             keyCodes[m_KeyIndex] = key;
             InputSystem.Settings.Save();
             m_TextMesh.text = Key.ToString();
+
+            m_OnReassignKey.Invoke();
         }
 
     }
