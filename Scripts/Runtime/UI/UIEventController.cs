@@ -26,7 +26,7 @@ namespace Gobblefish.UI {
         public Material material;
     }
     
-    [CreateAssetMenu(fileName="UIEventController", menuName="UIEventController")]
+    [CreateAssetMenu(fileName="UIEventController", menuName="UI Event Asset")]
     public class UIEventController : ScriptableObject {
 
         public UIEventParameters[] eventParameters;

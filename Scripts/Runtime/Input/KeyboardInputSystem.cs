@@ -22,9 +22,9 @@ namespace Gobblefish.Input {
         [SerializeField] 
         protected ActionInput[] m_DirectionActions;
 
-        // Action Input Keybinds.
-        // [SerializeField] 
-        // private KeyCode[] m_ActionKeybinds;
+        // Action Input Keybinds. 
+        // [SerializeField]
+        // private KeyCode[] m_ActionKeybinds; 
 
         protected override void CreateInputs() {
             base.CreateInputs();
@@ -48,7 +48,7 @@ namespace Gobblefish.Input {
             }
 
             float verticalDir = m_DirectionActions[0].Pressed.ToInt() - m_DirectionActions[2].Pressed.ToInt();
-            float horizontalDir = m_DirectionActions[1].Pressed.ToInt() - m_DirectionActions[3].Pressed.ToInt();
+            float horizontalDir = -m_DirectionActions[1].Pressed.ToInt() + m_DirectionActions[3].Pressed.ToInt();
 
             // Updates the directional input.
             m_Direction.OnUpdate(new Vector2(horizontalDir, verticalDir));
