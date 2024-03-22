@@ -23,8 +23,6 @@ namespace Gobblefish.UI {
         [SerializeField]
         private GameObject m_Node;
         public GameObject node => node;
-        private Vector3 m_NodeDefaultScale;
-        public Vector3 nodeDefaultScale => m_NodeDefaultScale;
         
         [SerializeField]
         private RectTransform m_Bar;
@@ -44,10 +42,6 @@ namespace Gobblefish.UI {
         [SerializeField]
         private UnityEvent m_OnEndDrag = new UnityEvent();
 
-        void Start() {
-            m_NodeDefaultScale = m_Node.transform.localScale;
-        }
-
         public void SetValue(float value) {
             m_Value = value; 
             SetDraggedPosition(m_Value);
@@ -56,7 +50,7 @@ namespace Gobblefish.UI {
 
         public void OnBeginDrag(PointerEventData eventData) {
             m_OnBeginDrag.Invoke();
-            m_UIEventController.InvokeUIEvent(this, UIEventEnum.OnClick);
+            m_UIEventController.InvokeUISliderEvent(this, UIEventEnum.OnClick);
             SetDraggedPosition(eventData);
         }
 
@@ -111,7 +105,7 @@ namespace Gobblefish.UI {
         }
 
         public void OnEndDrag(PointerEventData eventData) {
-            m_UIEventController.InvokeUIEvent(this, UIEventEnum.OnIdle);
+            m_UIEventController.InvokeUISliderEvent(this, UIEventEnum.OnIdle);
             m_OnEndDrag.Invoke();
         }
 

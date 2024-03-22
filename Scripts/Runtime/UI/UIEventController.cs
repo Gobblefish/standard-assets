@@ -21,30 +21,24 @@ namespace Gobblefish.UI {
     [System.Serializable]
     public class UIEventParameters {
         public UIEventEnum eventEnum;
-        public float scale;
+        public float scale = 1f;
         public AudioSnippet audioSnippet;
         public Material material;
     }
-
-    // The scale that the selector becomes on hover. 
-    // public const float HOVER_SCALE = 1.1f;
-    // public const float CLICK_SCALE = 0.9f;
-    // public const float DISABLED_SCALE = 1f;
-    // public const float IDLE_SCALE = 1f;
     
     [CreateAssetMenu(fileName="UIEventController", menuName="UIEventController")]
     public class UIEventController : ScriptableObject {
 
         public UIEventParameters[] eventParameters;
 
-        public void InvokeUIEvent(Gobblefish.UI.Button button, UIEventEnum eventEnum) {
+        public void InvokeUIButtonEvent(Gobblefish.UI.Button button, UIEventEnum eventEnum) {
             UIEventParameters eventParams = GetUIEvent(eventEnum);
             if (eventParams == null) { 
                 Debug.Log("Trying to run an undefined event.");
                 return;
             }
             
-            button.transform.localScale = button.defaultScale * eventParams.scale;
+            button.transform.localScale = new Vector3(1f, 1f, 1f) * eventParams.scale;
             if (eventParams.audioSnippet != null) {
                 eventParams.audioSnippet.Play();
             }
@@ -57,14 +51,14 @@ namespace Gobblefish.UI {
             
         }
 
-        public void InvokeUIEvent(Gobblefish.UI.Slider slider, UIEventEnum eventEnum) {
+        public void InvokeUISliderEvent(Gobblefish.UI.Slider slider, UIEventEnum eventEnum) {
             UIEventParameters eventParams = GetUIEvent(eventEnum);
             if (eventParams == null) { 
                 Debug.Log("Trying to run an undefined event.");
                 return;
             }
             
-            slider.node.transform.localScale = slider.nodeDefaultScale * eventParams.scale;
+            slider.node.transform.localScale = new Vector3(1f, 1f, 1f) * eventParams.scale;
             if (eventParams.audioSnippet != null) {
                 eventParams.audioSnippet.Play();
             }

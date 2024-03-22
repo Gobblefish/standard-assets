@@ -23,14 +23,6 @@ namespace Gobblefish.UI {
         // The duration for which a click is processed.
         public const float CLICK_DURATION = 0.03f;
 
-        // The scale that this selector is by default. 
-        private Vector3 m_DefaultScale;
-        public Vector3 defaultScale => m_DefaultScale;
-
-        // The default material for this button.
-        private Material m_DefaultMaterial;
-        public Material defaultMaterial => m_DefaultMaterial;
-
         // The event triggered when this button is clicked.
         public UnityEvent m_OnClick = new UnityEvent();
 
@@ -53,18 +45,8 @@ namespace Gobblefish.UI {
 
         // Runs once at the before the first frame. 
         void Start() {
-            // Get all the default parameters.
             m_SpriteRenderer = GetComponent<SpriteRenderer>();
             m_Image = GetComponent<Image>();
-            m_DefaultScale = transform.localScale;
-
-            if (m_Image != null) {
-                m_DefaultMaterial = m_Image.material;
-            }
-            if (m_SpriteRenderer != null) {
-                m_DefaultMaterial = m_SpriteRenderer.sharedMaterial;
-            }
-
             RectTransform rt = GetComponent<RectTransform>();
             if (rt != null) {
                 rt.pivot = new Vector2(0.5f, 0.5f);
@@ -72,17 +54,15 @@ namespace Gobblefish.UI {
         }
 
         void OnEnable() {
-            if (m_DefaultMaterial != null) {
-                m_UIEventController.InvokeUIEvent(this, UIEventEnum.OnIdle);
-                m_Clicking = false;
-            }
+            m_UIEventController.InvokeUIButtonEvent(this, UIEventEnum.OnIdle);
+            m_Clicking = false;
         }
 
         // Detect if the Cursor clicks on this GameObject
         public void OnPointerClick(PointerEventData pointerEventData) {
             if (pointerEventData.button == PointerEventData.InputButton.Left && !m_Clicking) {
                 
-                m_UIEventController.InvokeUIEvent(this, UIEventEnum.OnClick);
+                m_UIEventController.InvokeUIButtonEvent(this, UIEventEnum.OnClick);
                 StartCoroutine(IEClick());
                 m_Clicking = true;
 
@@ -95,10 +75,10 @@ namespace Gobblefish.UI {
             yield return new WaitForSeconds(CLICK_DURATION);
             
             if (m_MouseOver) {
-                m_UIEventController.InvokeUIEvent(this, UIEventEnum.OnHover);
+                m_UIEventController.InvokeUIButtonEvent(this, UIEventEnum.OnHover);
             }
             else {
-                m_UIEventController.InvokeUIEvent(this, UIEventEnum.OnIdle);
+                m_UIEventController.InvokeUIButtonEvent(this, UIEventEnum.OnIdle);
             }
             m_Clicking = false;
             m_OnClick.Invoke();
@@ -110,7 +90,7 @@ namespace Gobblefish.UI {
             if (pointerEventData == null || pointerEventData.pointerEnter == null) { return; }
 
             if (!m_Clicking && !m_MouseOver) {
-                m_UIEventController.InvokeUIEvent(this, UIEventEnum.OnHover);
+                m_UIEventController.InvokeUIButtonEvent(this, UIEventEnum.OnHover);
             }
             if (!m_MouseOver) {
                 m_OnEnter.Invoke();
@@ -123,7 +103,7 @@ namespace Gobblefish.UI {
             if (pointerEventData == null || pointerEventData.pointerEnter == null) { return; }
 
             if (!m_Clicking && m_MouseOver) {
-                m_UIEventController.InvokeUIEvent(this, UIEventEnum.OnIdle);
+                m_UIEventController.InvokeUIButtonEvent(this, UIEventEnum.OnIdle);
             }
             if (m_MouseOver) {
                 m_OnExit.Invoke();
