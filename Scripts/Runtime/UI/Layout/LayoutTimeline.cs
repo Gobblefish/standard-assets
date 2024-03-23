@@ -4,8 +4,7 @@ using System.Collections.Generic;
 // Unity.
 using UnityEngine;
 // Gobblefish.
-using Gobblefish.Layout;
-
+using Gobblefish.Animation;
 
 namespace Gobblefish.Layout {
 
@@ -22,6 +21,9 @@ namespace Gobblefish.Layout {
         // The position within the timeline. 
         [SerializeField]
         private float m_Ticks = 0f;
+
+        [SerializeField]
+        private TransformAnimAsset m_Animations;
 
         // The snippets in the background.
         [SerializeField]
@@ -49,10 +51,25 @@ namespace Gobblefish.Layout {
         // Runs once every frame.
         void Update() {
             if (!Application.isPlaying) {
+
+                // Set the names.
                 for (int i = 0; i < m_Snippets.Length; i++) {
                     string name = m_Snippets[i].transform != null ? m_Snippets[i].transform.gameObject.name : (m_Snippets[i].rectTransform != null ? m_Snippets[i].rectTransform.gameObject.name : "unassigned");
                     m_Snippets[i].name = name;
                 }
+
+                // Set the names.
+                if (m_Animations != null) {
+
+                    for (int i = 0; i < m_Snippets.Length; i++) {
+                        TransformAnimation animation = m_Animations.Get(m_Snippets[i].animationName);
+                        if (animation != null) {
+                            m_Snippets[i].transformAnimation = animation.DeepCopy();
+                        }
+                    }
+
+                }
+
             }
         }
 

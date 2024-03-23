@@ -24,6 +24,9 @@ namespace Gobblefish.Layout {
         [HideInInspector]
         public RectTransform rectTransform = null;
 
+        // 
+        public string animationName = "";
+
         // The animation with which this loads with.
         public TransformAnimation transformAnimation;
 

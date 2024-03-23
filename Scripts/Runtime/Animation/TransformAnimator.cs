@@ -105,6 +105,32 @@ namespace Gobblefish.Animation {
             return rotation * Quaternion.Euler(0f, 0f, rotationScale * rotationCurve.Evaluate(t));
         }
 
+        public TransformAnimation DeepCopy() {
+            TransformAnimation newAnimation = new TransformAnimation();
+
+            newAnimation.baseAnchor = this.baseAnchor;
+            newAnimation.baseStretch = this.baseStretch;
+            newAnimation.baseRotation = this.baseRotation;
+            newAnimation.baseRotation = this.baseRotation;
+
+            newAnimation.ticks = this.ticks;
+            newAnimation.duration = this.duration;
+            newAnimation.loop = this.loop;
+
+            newAnimation.posScale = this.posScale;
+            newAnimation.horPosCurve = this.horPosCurve;
+            newAnimation.vertPosCurve = this.vertPosCurve;
+
+            newAnimation.strectchScale = this.strectchScale;
+            newAnimation.horStretchCurve = this.horStretchCurve;
+            newAnimation.vertStretchCurve = this.vertStretchCurve;
+
+            newAnimation.rotationScale = this.rotationScale;
+            newAnimation.rotationCurve = this.rotationCurve;
+            
+            return newAnimation;
+        }
+
     }
 
     public class TransformAnimator : MonoBehaviour {

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: TransformAnimationAsset
   m_EditorClassIdentifier: 
   m_Animations:
-  - name: 
+  - name: Title Text
     animation:
       duration: 0
       loop: 0
       basePosition: {x: 0, y: 0}
       baseAnchor: {x: 0, y: 0}
-      posScale: {x: 0, y: 0}
+      posScale: {x: 0, y: 5}
       horPosCurve:
         serializedVersion: 2
         m_Curve: []
@@ -28,9 +28,231 @@ MonoBehaviour:
         m_RotationOrder: 0
       vertPosCurve:
         serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: -0.010108741
+          outSlope: -0.010108741
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 0
+      baseStretch: {x: 0, y: 0}
+      strectchScale: {x: 10, y: 0}
+      horStretchCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: -0.5
+          inSlope: 0.5
+          outSlope: 0.5
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 0
+          inSlope: 0.5
+          outSlope: 0.5
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 0
+      vertStretchCurve:
+        serializedVersion: 2
         m_Curve: []
         m_PreInfinity: 0
         m_PostInfinity: 0
+        m_RotationOrder: 0
+      baseRotation: {x: 0, y: 0, z: 0, w: 0}
+      rotationScale: 0
+      rotationCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - name: Play Button
+    animation:
+      duration: 0
+      loop: 0
+      basePosition: {x: 0, y: 0}
+      baseAnchor: {x: 0, y: 0}
+      posScale: {x: 0, y: -5}
+      horPosCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      vertPosCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: -0.010108741
+          outSlope: -0.010108741
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.8
+          value: -0.1
+          inSlope: -0.8588908
+          outSlope: -0.8588908
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 0
+      baseStretch: {x: 0, y: 0}
+      strectchScale: {x: 0, y: 0}
+      horStretchCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      vertStretchCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      baseRotation: {x: 0, y: 0, z: 0, w: 0}
+      rotationScale: 0
+      rotationCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - name: Top Left Buttons
+    animation:
+      duration: 0
+      loop: 0
+      basePosition: {x: 0, y: 0}
+      baseAnchor: {x: 0, y: 0}
+      posScale: {x: -5, y: 0}
+      horPosCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: -0.010108741
+          outSlope: -0.010108741
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 0
+      vertPosCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 0
+      baseStretch: {x: 0, y: 0}
+      strectchScale: {x: 0, y: 0}
+      horStretchCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      vertStretchCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      baseRotation: {x: 0, y: 0, z: 0, w: 0}
+      rotationScale: 0
+      rotationCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - name: Tagline Text
+    animation:
+      duration: 0
+      loop: 0
+      basePosition: {x: 0, y: 0}
+      baseAnchor: {x: 0, y: 0}
+      posScale: {x: -15, y: 0}
+      horPosCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: -0.010108741
+          outSlope: -0.010108741
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 0
+      vertPosCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
         m_RotationOrder: 0
       baseStretch: {x: 0, y: 0}
       strectchScale: {x: 0, y: 0}
