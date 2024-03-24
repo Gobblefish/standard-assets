@@ -47,8 +47,8 @@ namespace Gobblefish.Input {
                 }
             }
 
-            float verticalDir = m_DirectionActions[0].Pressed.ToInt() - m_DirectionActions[2].Pressed.ToInt();
-            float horizontalDir = -m_DirectionActions[1].Pressed.ToInt() + m_DirectionActions[3].Pressed.ToInt();
+            float verticalDir = m_DirectionActions[0].Held.ToInt() - m_DirectionActions[2].Held.ToInt();
+            float horizontalDir = -m_DirectionActions[1].Held.ToInt() + m_DirectionActions[3].Held.ToInt();
 
             // Updates the directional input.
             m_Direction.OnUpdate(new Vector2(horizontalDir, verticalDir));
