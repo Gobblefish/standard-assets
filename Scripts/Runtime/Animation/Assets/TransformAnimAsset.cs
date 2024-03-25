@@ -8,9 +8,9 @@ using UnityEngine.Rendering.Universal;
 
 namespace Gobblefish.Animation {
 
-    [CreateAssetMenu(fileName="TransformAnimationAsset", menuName="AnimationAssets/Transform Animation Asset")]
-    public class TransformAnimAsset : AnimationAsset<TransformAnimation> {
+    // [CreateAssetMenu(fileName="TransformAnimationAsset", menuName="AnimationAssets/Transform Animation Asset")]
+    // public class TransformAnimAsset : AnimationAsset<TransformAnimation> {
 
-    }
+    // }
 
 }

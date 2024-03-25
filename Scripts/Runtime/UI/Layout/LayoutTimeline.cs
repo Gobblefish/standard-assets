@@ -22,8 +22,8 @@ namespace Gobblefish.Layout {
         [SerializeField]
         private float m_Ticks = 0f;
 
-        [SerializeField]
-        private TransformAnimAsset m_Animations;
+        // [SerializeField]
+        // private TransformAnimAsset m_Animations;
 
         // The snippets in the background.
         [SerializeField]
@@ -59,16 +59,16 @@ namespace Gobblefish.Layout {
                 }
 
                 // Set the names.
-                if (m_Animations != null) {
+                // if (m_Animations != null) {
 
-                    for (int i = 0; i < m_Snippets.Length; i++) {
-                        TransformAnimation animation = m_Animations.Get(m_Snippets[i].animationName);
-                        if (animation != null) {
-                            m_Snippets[i].transformAnimation = animation.DeepCopy();
-                        }
-                    }
+                    // for (int i = 0; i < m_Snippets.Length; i++) {
+                    //     TransformAnimation animation = m_Animations.Get(m_Snippets[i].animationName);
+                    //     if (animation != null) {
+                    //         m_Snippets[i].transformAnimation = animation.DeepCopy();
+                    //     }
+                    // }
 
-                }
+                // }
 
             }
         }
