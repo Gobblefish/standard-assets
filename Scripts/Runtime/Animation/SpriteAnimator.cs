@@ -60,6 +60,12 @@ namespace Gobblefish.Animation {
         private bool m_Animate = true;
 
         [SerializeField]
+        private bool m_Loop = true;
+
+        [SerializeField]
+        private bool m_TurnOffOnEnd = false;
+
+        [SerializeField]
         private bool m_RandomizeInitialTick = false;
 
         // The sprite attacted to this.
@@ -85,6 +91,14 @@ namespace Gobblefish.Animation {
         public void Animate(float dt) {
             m_Animation.Tick(dt);
             m_SpriteRenderer.sprite = m_Animation.GetFrame();
+
+            if (!m_Loop && m_Animation.ticks > m_Animation.duration) {
+                Stop();
+                if (m_TurnOffOnEnd) {
+                    gameObject.SetActive(false);
+                }
+            }
+
         }
 
         public static void Animate(SpriteRenderer spriteRenderer, SpriteAnimation animation, float dt) {
@@ -103,6 +117,11 @@ namespace Gobblefish.Animation {
 
         public void SetFrameRate(float fps) {
             m_Animation.fps = fps;
+        }
+
+        public void PlayFromStart() {
+            m_Ticks = true;
+            m_Animate = true;
         }
 
         public void Play() {
