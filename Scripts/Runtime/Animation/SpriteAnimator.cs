@@ -122,16 +122,29 @@ namespace Gobblefish.Animation {
         public void PlayFromStart() {
             m_Animation.ticks = 0f;
             m_Animate = true;
+            if (!gameObject.activeSelf) {
+                gameObject.SetActive(true);
+            }
         }
 
         public void Play() {
             m_Animate = true;
+            if (!gameObject.activeSelf) {
+                gameObject.SetActive(true);
+            }
+        }
+
+        public void Pause() {
+            m_Animate = false;
         }
 
         public void Stop() {
             m_Animate = false;
             if (m_SpriteRenderer != null && m_Animation != null && m_Animation.sprites.Length > 0) {
                 m_SpriteRenderer.sprite = m_Animation.sprites[0];
+            }
+            if (gameObject.activeSelf) {
+                gameObject.SetActive(false);
             }
         }
 
