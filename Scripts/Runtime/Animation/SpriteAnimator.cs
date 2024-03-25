@@ -120,7 +120,7 @@ namespace Gobblefish.Animation {
         }
 
         public void PlayFromStart() {
-            m_Ticks = true;
+            m_Animation.ticks = 0f;
             m_Animate = true;
         }
 
