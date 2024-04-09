@@ -67,7 +67,6 @@ namespace Gobblefish.Animation {
     ///<summary>
     ///
     ///<summary>
-    [RequireComponent(typeof(SpriteRenderer))]
     public class MaterialAnimator : MonoBehaviour {
 
         // The idle light animation.
@@ -81,6 +80,7 @@ namespace Gobblefish.Animation {
         private float m_PlayDirection = 1f;
 
         // The light attacted to this.
+        [SerializeField]
         private SpriteRenderer m_SpriteRenderer;
 
         [SerializeField]
@@ -91,7 +91,9 @@ namespace Gobblefish.Animation {
 
         // Runs once on instantiation.
         void Start() {
-            m_SpriteRenderer = GetComponent<SpriteRenderer>();
+            if (m_SpriteRenderer == null) {
+                m_SpriteRenderer = GetComponent<SpriteRenderer>();
+            }
             for (int i = 0; i < m_FloatAnimations.Length; i++) {
                 m_FloatAnimations[i].GetValueParams(m_SpriteRenderer.material);
             } 
