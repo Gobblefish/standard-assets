@@ -115,7 +115,7 @@ namespace Gobblefish.Animation {
             m_Animate = true;
             m_PlayDirection = -1f;
             for (int i = 0; i < m_FloatAnimations.Length; i++) {
-                m_FloatAnimations[i].ticks = m_FloatAnimations[i].duration - 0.02f;
+                m_FloatAnimations[i].ticks = m_FloatAnimations[i].duration;
             }
             if (!gameObject.activeSelf) {
                 gameObject.SetActive(true);
