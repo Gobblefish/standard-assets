@@ -83,6 +83,9 @@ namespace Gobblefish.Animation {
         // The light attacted to this.
         private SpriteRenderer m_SpriteRenderer;
 
+        [SerializeField]
+        private SpriteRenderer[] m_ExtraRenderers;
+
         // Runs once on instantiation.
         void Start() {
             m_SpriteRenderer = GetComponent<SpriteRenderer>();
@@ -100,6 +103,9 @@ namespace Gobblefish.Animation {
             for (int i = 0; i < m_FloatAnimations.Length; i++) {
                 m_FloatAnimations[i].Tick(dt);
                 m_SpriteRenderer.material.SetFloat(m_FloatAnimations[i].varName, m_FloatAnimations[i].GetValue());
+                for (int i = 0; i < m_ExtraRenderers.Length; i++) {
+                    m_ExtraRenderers[i].sharedMaterial = m_SpriteRenderer.sharedMaterial;
+                }
             } 
         }
 
