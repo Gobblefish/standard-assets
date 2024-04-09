@@ -95,10 +95,10 @@ namespace Gobblefish.Animation {
             } 
         }
 
-        public static void Animate(Light2D light, LightAnimation animation, float dt) {
-            animation.Tick(dt);
-            //
-        }
+        // public static void Animate(Light2D light, LightAnimation animation, float dt) {
+        //     animation.Tick(dt);
+        //     //
+        // }
 
         public void Play() {
             m_Animate = true;
@@ -128,9 +128,9 @@ namespace Gobblefish.Animation {
 
         public void Stop() {
             m_Animate = false;
-            if (m_SpriteRenderer != null && m_Animation != null && m_Animation.sprites.Length > 0) {
-                m_SpriteRenderer.sprite = m_Animation.sprites[0];
-            }
+            // if (m_SpriteRenderer != null && m_Animation != null && m_Animation.sprites.Length > 0) {
+            //     m_SpriteRenderer.sprite = m_Animation.sprites[0];
+            // }
             if (gameObject.activeSelf) {
                 gameObject.SetActive(false);
             }
