@@ -86,6 +86,9 @@ namespace Gobblefish.Animation {
         [SerializeField]
         private SpriteRenderer[] m_ExtraRenderers;
 
+        [SerializeField]
+        private SpriteShapeRenderer[] m_ExtraShapeRenderers;
+
         // Runs once on instantiation.
         void Start() {
             m_SpriteRenderer = GetComponent<SpriteRenderer>();
@@ -105,6 +108,10 @@ namespace Gobblefish.Animation {
                 m_SpriteRenderer.material.SetFloat(m_FloatAnimations[i].varName, m_FloatAnimations[i].GetValue());
                 for (int i = 0; i < m_ExtraRenderers.Length; i++) {
                     m_ExtraRenderers[i].sharedMaterial = m_SpriteRenderer.sharedMaterial;
+                }
+                for (int i = 0; i < m_ExtraShapeRenderers.Length; i++) {
+                    m_ExtraShapeRenderers[i].materials[0] = m_SpriteRenderer.sharedMaterial;
+                    m_ExtraShapeRenderers[i].materials[1] = m_SpriteRenderer.sharedMaterial;
                 }
             } 
         }
