@@ -138,9 +138,9 @@ namespace Gobblefish.Animation {
             for (int i = 0; i < m_FloatAnimations.Length; i++) {
                 m_FloatAnimations[i].ticks = m_FloatAnimations[i].duration;
             }
-            if (!gameObject.activeSelf) {
-                gameObject.SetActive(true);
-            }
+            // if (!gameObject.activeSelf) {
+            //     gameObject.SetActive(true);
+            // }
         }
 
         public void Pause() {
