@@ -87,7 +87,7 @@ namespace Gobblefish.Animation {
         private SpriteRenderer[] m_ExtraRenderers;
 
         [SerializeField]
-        private SpriteShapeRenderer[] m_ExtraShapeRenderers;
+        private UnityEngine.U2D.SpriteShapeRenderer[] m_ExtraShapeRenderers;
 
         // Runs once on instantiation.
         void Start() {
@@ -106,12 +106,12 @@ namespace Gobblefish.Animation {
             for (int i = 0; i < m_FloatAnimations.Length; i++) {
                 m_FloatAnimations[i].Tick(dt);
                 m_SpriteRenderer.material.SetFloat(m_FloatAnimations[i].varName, m_FloatAnimations[i].GetValue());
-                for (int i = 0; i < m_ExtraRenderers.Length; i++) {
-                    m_ExtraRenderers[i].sharedMaterial = m_SpriteRenderer.sharedMaterial;
+                for (int j = 0; j < m_ExtraRenderers.Length; j++) {
+                    m_ExtraRenderers[j].sharedMaterial = m_SpriteRenderer.sharedMaterial;
                 }
-                for (int i = 0; i < m_ExtraShapeRenderers.Length; i++) {
-                    m_ExtraShapeRenderers[i].materials[0] = m_SpriteRenderer.sharedMaterial;
-                    m_ExtraShapeRenderers[i].materials[1] = m_SpriteRenderer.sharedMaterial;
+                for (int j = 0; j < m_ExtraShapeRenderers.Length; j++) {
+                    m_ExtraShapeRenderers[j].materials[0] = m_SpriteRenderer.sharedMaterial;
+                    m_ExtraShapeRenderers[j].materials[1] = m_SpriteRenderer.sharedMaterial;
                 }
             } 
         }
