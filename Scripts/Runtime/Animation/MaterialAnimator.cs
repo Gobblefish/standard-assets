@@ -41,14 +41,21 @@ namespace Gobblefish.Animation {
             if (ticks > duration) {
                 ticks = ticks % duration;
             }
+            else if (ticks < 0f) {
+                ticks += duration;
+            }
         }
 
         // Tick the animation.
         public void Tick(float dt) {
-            ticks += Time.fixedDeltaTime;
+            ticks += dt;
             if (ticks > duration) {
                 ticks -= duration;
             }
+            else if (ticks < 0f) {
+                ticks += duration;
+            }
+
         }
 
         public float GetValue() {
@@ -70,6 +77,7 @@ namespace Gobblefish.Animation {
         [SerializeField]
         private bool m_Animate;
 
+        [SerializeField]
         private float m_PlayDirection = 1f;
 
         // The light attacted to this.
@@ -85,12 +93,12 @@ namespace Gobblefish.Animation {
 
         void FixedUpdate() {
             if (!m_Animate) { return; }
-            Animate(Time.fixedDeltaTime);
+            Animate(m_PlayDirection * Time.fixedDeltaTime);
         }
 
         public void Animate(float dt) {
             for (int i = 0; i < m_FloatAnimations.Length; i++) {
-                m_FloatAnimations[i].Tick(m_PlayDirection * dt);
+                m_FloatAnimations[i].Tick(dt);
                 m_SpriteRenderer.material.SetFloat(m_FloatAnimations[i].varName, m_FloatAnimations[i].GetValue());
             } 
         }
