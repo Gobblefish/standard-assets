@@ -18,7 +18,7 @@ namespace Gobblefish.Animation {
         
         // The parameters of the animation.
         [Header("Params")]
-        private float ticks;
+        public float ticks;
         public float duration;
         private float t => ticks / duration;
 
@@ -70,6 +70,8 @@ namespace Gobblefish.Animation {
         [SerializeField]
         private bool m_Animate;
 
+        private float m_PlayDirection = 1f;
+
         // The light attacted to this.
         private SpriteRenderer m_SpriteRenderer;
 
@@ -88,7 +90,7 @@ namespace Gobblefish.Animation {
 
         public void Animate(float dt) {
             for (int i = 0; i < m_FloatAnimations.Length; i++) {
-                m_FloatAnimations[i].Tick(dt);
+                m_FloatAnimations[i].Tick(m_PlayDirection * dt);
                 m_SpriteRenderer.material.SetFloat(m_FloatAnimations[i].varName, m_FloatAnimations[i].GetValue());
             } 
         }
@@ -96,6 +98,42 @@ namespace Gobblefish.Animation {
         public static void Animate(Light2D light, LightAnimation animation, float dt) {
             animation.Tick(dt);
             //
+        }
+
+        public void Play() {
+            m_Animate = true;
+            m_PlayDirection = 1f;
+            for (int i = 0; i < m_FloatAnimations.Length; i++) {
+                m_FloatAnimations[i].ticks = 0f;
+            }
+            if (!gameObject.activeSelf) {
+                gameObject.SetActive(true);
+            }
+        }
+
+        public void PlayBackwards() {
+            m_Animate = true;
+            m_PlayDirection = -1f;
+            for (int i = 0; i < m_FloatAnimations.Length; i++) {
+                m_FloatAnimations[i].ticks = m_FloatAnimations[i].duration - 0.02f;
+            }
+            if (!gameObject.activeSelf) {
+                gameObject.SetActive(true);
+            }
+        }
+
+        public void Pause() {
+            m_Animate = false;
+        }
+
+        public void Stop() {
+            m_Animate = false;
+            if (m_SpriteRenderer != null && m_Animation != null && m_Animation.sprites.Length > 0) {
+                m_SpriteRenderer.sprite = m_Animation.sprites[0];
+            }
+            if (gameObject.activeSelf) {
+                gameObject.SetActive(false);
+            }
         }
 
     }
