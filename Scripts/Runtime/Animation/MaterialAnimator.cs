@@ -127,9 +127,9 @@ namespace Gobblefish.Animation {
             for (int i = 0; i < m_FloatAnimations.Length; i++) {
                 m_FloatAnimations[i].ticks = 0f;
             }
-            if (!gameObject.activeSelf) {
-                gameObject.SetActive(true);
-            }
+            // if (!gameObject.activeSelf) {
+            //     gameObject.SetActive(true);
+            // }
         }
 
         public void PlayBackwards() {
@@ -152,9 +152,9 @@ namespace Gobblefish.Animation {
             // if (m_SpriteRenderer != null && m_Animation != null && m_Animation.sprites.Length > 0) {
             //     m_SpriteRenderer.sprite = m_Animation.sprites[0];
             // }
-            if (gameObject.activeSelf) {
-                gameObject.SetActive(false);
-            }
+            // if (gameObject.activeSelf) {
+            //     gameObject.SetActive(false);
+            // }
         }
 
     }
