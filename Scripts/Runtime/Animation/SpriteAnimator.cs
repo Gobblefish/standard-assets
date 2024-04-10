@@ -13,19 +13,19 @@ namespace Gobblefish.Animation {
         // The parameters of the animation.
         [Header("Params")]
         public Sprite[] sprites;
-        public float ticks;
+        [HideInInspector] public float ticks;
         private float t => (ticks * fps) % (float)sprites.Length;
         public float duration => fps == 0f ? 0f : (float)sprites.Length / fps; 
 
         // The frame of the current animation.
         [Header("Frame")]
         public float fps;
-        public int currentFrame;
+        [HideInInspector] public int currentFrame;
 
         //
         [Header("Rendering Order")]
-        private int baseOffset;
-        public int orderOffset;
+        [HideInInspector] private int baseOffset;
+        [HideInInspector] public int orderOffset;
 
         public void SetSpriteParams(SpriteRenderer spriteRenderer) {
             baseOffset = spriteRenderer.sortingOrder;
