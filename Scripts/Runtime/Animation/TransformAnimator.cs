@@ -12,7 +12,7 @@ namespace Gobblefish.Animation {
         
         [Header("Parames")]
         [HideInInspector] public float ticks;
-        [HideInInspector] public float duration;
+        public float duration;
         public bool loop;
         private float t => ticks / duration;
 
