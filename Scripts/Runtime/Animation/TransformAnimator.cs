@@ -154,6 +154,12 @@ namespace Gobblefish.Animation {
             }
         }
 
+        public void SetDuration(float duration) {
+            float t = m_Animation.ticks/m_Animation.duration;
+            m_Animation.duration = duration;
+            m_Animation.ticks = t * m_Animation.duration;
+        }
+
         public void Play() {
             m_Animate = true;
         }
