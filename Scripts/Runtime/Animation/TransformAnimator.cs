@@ -11,8 +11,8 @@ namespace Gobblefish.Animation {
     public class TransformAnimation {
         
         [Header("Parames")]
-        private float ticks;
-        public float duration;
+        [HideInInspector] public float ticks;
+        [HideInInspector] public float duration;
         public bool loop;
         private float t => ticks / duration;
 
