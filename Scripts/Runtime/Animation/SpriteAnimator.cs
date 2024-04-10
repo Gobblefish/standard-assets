@@ -11,16 +11,17 @@ namespace Gobblefish.Animation {
     public class SpriteAnimation {
         
         // The parameters of the animation.
-        [Header("Params")]
+        // [Header("Params")]
+        [HideInInspector] public int currentFrame;
+        public float fps;
+
         public Sprite[] sprites;
         [HideInInspector] public float ticks;
         private float t => (ticks * fps) % (float)sprites.Length;
         public float duration => fps == 0f ? 0f : (float)sprites.Length / fps; 
 
         // The frame of the current animation.
-        [Header("Frame")]
-        public float fps;
-        [HideInInspector] public int currentFrame;
+        // [Header("Frame")]
 
         //
         [Header("Rendering Order")]
@@ -36,7 +37,8 @@ namespace Gobblefish.Animation {
         }
 
         public Sprite GetFrame() {
-            return sprites[(int)Mathf.Floor(t)];
+            currentFrame = (int)Mathf.Floor(t);
+            return sprites[currentFrame];
         }
 
         public int GetOffset() {
