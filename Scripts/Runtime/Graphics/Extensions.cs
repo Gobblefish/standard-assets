@@ -28,15 +28,26 @@ namespace Gobblefish.Graphics {
 
         public static bool FullyOnScreen(this Camera camera, SpriteRenderer spriteRenderer) {
             Bounds spriteBounds = spriteRenderer.bounds;
-            return camera.OnScreen(spriteBounds.min, spriteBounds.max);
+            return camera.FullyOnScreen(spriteBounds.min, spriteBounds.max);
         }
 
         public static bool PartiallyOnScreen(this Camera camera, Vector2 min, Vector2 max) {
             (Vector2, Vector2) camCorners = camera.GetCorners();
-            if (min.x > camCorners.Item1.x || max.x < camCorners.Item2.x) {
+
+            // if the min corner is within the screen
+            // so greater than cam min and less than cam max.
+            bool minCornerA = min.x > camCorners.Item1.x && min.y > camCorners.Item1.y;
+            bool minCornerB = min.x < camCorners.Item2.x && min.y < camCorners.Item2.y;
+
+            // if the max corner is within the screen
+            // so greater than cam min and less than cam max.
+            bool maxCornerA = max.x > camCorners.Item1.x && max.y > camCorners.Item1.y;
+            bool maxCornerB = max.x < camCorners.Item2.x && max.y < camCorners.Item2.y;
+
+            if (minCornerA && minCornerB) {
                 return true;
             }
-            if (min.y > camCorners.Item1.y || max.y < camCorners.Item2.y) {
+            if (maxCornerA && maxCornerB) {
                 return true;
             }
             return false;
