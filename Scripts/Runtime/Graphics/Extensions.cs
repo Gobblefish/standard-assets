@@ -31,7 +31,7 @@ namespace Gobblefish.Graphics {
             return camera.OnScreen(spriteBounds.min, spriteBounds.max);
         }
 
-        public static bool OnScreen(this Camera camera, Vector2 min, Vector max) {
+        public static bool OnScreen(this Camera camera, Vector2 min, Vector2 max) {
             (Vector2, Vector2) camCorners = camera.GetCorners();
             if (min.x < camCorners.Item1.x || max.x > camCorners.Item2.x) {
                 return false;
