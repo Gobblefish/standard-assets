@@ -27,21 +27,19 @@ namespace Gobblefish.Graphics {
         }
 
         public static bool OnScreen(this Camera camera, SpriteRenderer spriteRenderer) {
-            Vector2 dim = camera.GetOrthographicDimensions();
-            Vector3 halfDim = (Vector3)(dim / 2f);
-            Vector3 minCorner = camera.transform.position - halfDim;
-            Vector3 maxCorner = camera.transform.position + halfDim;
-
             Bounds spriteBounds = spriteRenderer.bounds;
+            return camera.OnScreen(spriteBounds.min, spriteBounds.max);
+        }
 
-            if (spriteBounds.min.x < minCorner.x || spriteBounds.max.x > maxCorner.x) {
+        public static bool OnScreen(this Camera camera, Vector2 min, Vector max) {
+            (Vector2, Vector2) camCorners = camera.GetCorners();
+            if (min.x < camCorners.Item1.x || max.x > camCorners.Item2.x) {
                 return false;
             }
-            if (spriteBounds.min.y < minCorner.y || spriteBounds.max.y > maxCorner.y) {
+            if (min.y < camCorners.Item1.y || max.y > camCorners.Item2.y) {
                 return false;
             }
             return true;
-
         }
 
         public static BoundsInt GetBoundsInt(this Camera camera, Grid grid) {
