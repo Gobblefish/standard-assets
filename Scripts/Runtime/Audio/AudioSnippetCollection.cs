@@ -19,6 +19,14 @@ namespace Gobblefish.Audio {
                 }
             }
         }
+
+        public void Stop(string name) {
+            for (int i = 0; i < m_Snippets.Length; i++) {
+                if (m_Snippets[i].name == name) {
+                    m_Snippets[i].Stop();       
+                }
+            }
+        }
     
     }
 
