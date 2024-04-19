@@ -26,12 +26,23 @@ namespace Gobblefish.Graphics {
             return (minCorner, maxCorner);
         }
 
-        public static bool OnScreen(this Camera camera, SpriteRenderer spriteRenderer) {
+        public static bool FullyOnScreen(this Camera camera, SpriteRenderer spriteRenderer) {
             Bounds spriteBounds = spriteRenderer.bounds;
             return camera.OnScreen(spriteBounds.min, spriteBounds.max);
         }
 
-        public static bool OnScreen(this Camera camera, Vector2 min, Vector2 max) {
+        public static bool PartiallyOnScreen(this Camera camera, Vector2 min, Vector2 max) {
+            (Vector2, Vector2) camCorners = camera.GetCorners();
+            if (min.x > camCorners.Item1.x || max.x < camCorners.Item2.x) {
+                return true;
+            }
+            if (min.y > camCorners.Item1.y || max.y < camCorners.Item2.y) {
+                return true;
+            }
+            return false;
+        }
+
+        public static bool FullyOnScreen(this Camera camera, Vector2 min, Vector2 max) {
             (Vector2, Vector2) camCorners = camera.GetCorners();
             if (min.x < camCorners.Item1.x || max.x > camCorners.Item2.x) {
                 return false;
