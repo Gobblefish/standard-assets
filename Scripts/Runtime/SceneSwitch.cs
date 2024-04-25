@@ -14,6 +14,10 @@ namespace Gobblefish {
             SceneManager.LoadScene(sceneName);          
         }
 
+        public static void GoTo(string sceneName) {
+            SceneManager.LoadScene(sceneName);          
+        }
+
     }
 
 }
