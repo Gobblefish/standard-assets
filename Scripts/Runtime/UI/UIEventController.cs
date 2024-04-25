@@ -38,7 +38,7 @@ namespace Gobblefish.UI {
                 return;
             }
             
-            button.transform.localScale = new Vector3(1f, 1f, 1f) * eventParams.scale;
+            button.transform.localScale = button.originalScale * eventParams.scale;
             if (eventParams.audioSnippet != null) {
                 eventParams.audioSnippet.Play();
             }
@@ -58,7 +58,7 @@ namespace Gobblefish.UI {
                 return;
             }
             
-            slider.node.transform.localScale = new Vector3(1f, 1f, 1f) * eventParams.scale;
+            slider.node.transform.localScale = slider.originalScale * eventParams.scale;
             if (eventParams.audioSnippet != null) {
                 eventParams.audioSnippet.Play();
             }

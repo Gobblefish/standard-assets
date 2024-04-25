@@ -43,11 +43,16 @@ namespace Gobblefish.UI {
         private SpriteRenderer m_SpriteRenderer;
         public SpriteRenderer spriteRenderer => m_SpriteRenderer;
 
+        //
+        private Vector3 m_OriginalScale;
+        public Vector3 originalScale => m_OriginalScale;
+
         // Runs once at the before the first frame. 
         void Start() {
             m_SpriteRenderer = GetComponent<SpriteRenderer>();
             m_Image = GetComponent<Image>();
             RectTransform rt = GetComponent<RectTransform>();
+            m_OriginalScale = transform.localScale;
             if (rt != null) {
                 rt.pivot = new Vector2(0.5f, 0.5f);
             }

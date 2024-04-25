@@ -52,6 +52,14 @@ namespace Gobblefish.UI {
         [SerializeField]
         private UnityEvent m_OnEndDrag = new UnityEvent();
 
+        //
+        private Vector3 m_OriginalScale;
+        public Vector3 originalScale => m_OriginalScale;
+
+        void Start() {
+            m_OriginalScale = transform.localScale;
+        }
+
         public void SetValue(float value) {
             m_Value = value; 
             SetDraggedPosition(m_Value);
