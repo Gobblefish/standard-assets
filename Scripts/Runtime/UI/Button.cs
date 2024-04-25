@@ -52,13 +52,13 @@ namespace Gobblefish.UI {
             m_SpriteRenderer = GetComponent<SpriteRenderer>();
             m_Image = GetComponent<Image>();
             RectTransform rt = GetComponent<RectTransform>();
-            m_OriginalScale = transform.localScale;
             if (rt != null) {
                 rt.pivot = new Vector2(0.5f, 0.5f);
             }
         }
 
         void OnEnable() {
+            m_OriginalScale = transform.localScale;
             m_UIEventController.InvokeUIButtonEvent(this, UIEventEnum.OnIdle);
             m_Clicking = false;
         }
