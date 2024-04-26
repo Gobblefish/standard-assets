@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 // Unity.
 using UnityEngine;
+using Gobblefish.Random;
 
 namespace Gobblefish.Animation {
 
@@ -80,7 +81,7 @@ namespace Gobblefish.Animation {
             m_SpriteRenderer.sortingOrder += m_Animation.orderOffset;
 
             if (m_RandomizeInitialTick) {
-                m_Animation.ticks = Random.Range(0f, m_Animation.duration);
+                m_Animation.ticks = Randomizer.Range(0f, m_Animation.duration);
             }
 
         }
@@ -110,7 +111,7 @@ namespace Gobblefish.Animation {
 
         public void SetAnimation(SpriteAnimation animation) {
             m_Animation = animation;
-            m_Animation.ticks = Random.Range(0f, 3f);
+            m_Animation.ticks = Randomizer.Range(0f, 3f);
             if (m_SpriteRenderer != null && m_Animation != null && m_Animation.sprites.Length > 0) {
                 m_SpriteRenderer.sortingOrder = m_Animation.GetOffset();
                 Animate(0f);

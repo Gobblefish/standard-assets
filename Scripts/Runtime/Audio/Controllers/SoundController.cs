@@ -4,7 +4,7 @@ using System.Collections.Generic;
 // Unity.
 using UnityEngine;
 // Gobblefish.
-using Gobblefish.Audio;
+using Gobblefish.Random;
 
 namespace Gobblefish.Audio {
 
@@ -78,7 +78,7 @@ namespace Gobblefish.Audio {
             audioSource.volume = Mathf.Sqrt(volume) * AudioManager.Settings.soundVolume * (AudioManager.Settings.soundMuted ? 0f : 1f);
             
             // Adjust the pitch 
-            audioSource.pitch = pitch * Random.Range(1f - PITCH_SPREAD, 1f + PITCH_SPREAD);
+            audioSource.pitch = pitch * Randomizer.Range(1f - PITCH_SPREAD, 1f + PITCH_SPREAD);
 
             // Skip the transient.
             audioSource.time = 0.02f;

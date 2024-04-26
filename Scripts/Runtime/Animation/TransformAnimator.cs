@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 // Unity.
 using UnityEngine;
+using Gobblefish.Random;
 
 namespace Gobblefish.Animation {
 
@@ -150,7 +151,7 @@ namespace Gobblefish.Animation {
         void Start() {
             m_Animation.SetTransformParams(transform);
             if (m_RandomizeInitialTick) {
-                m_Animation.SetTime(Random.Range(0f, m_Animation.duration));
+                m_Animation.SetTime(Randomizer.Range(0f, m_Animation.duration));
             }
         }
 
