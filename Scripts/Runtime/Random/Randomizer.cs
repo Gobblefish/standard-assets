@@ -10,11 +10,11 @@ namespace Gobblefish.Random {
 
         public abstract void Randomize();
         
-        public float Range(float min, float max) {
+        public static float Range(float min, float max) {
             return UnityEngine.Random.Range(min, max);
         }
 
-        public int Range(int min, int max) {
+        public static int Range(int min, int max) {
             return UnityEngine.Random.Range(min, max);
         }
 
