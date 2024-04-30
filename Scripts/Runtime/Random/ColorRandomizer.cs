@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Gobblefish.Random {
 
     [RequireComponent(typeof(SpriteRenderer))]
-    public class SpriteRandomizer : Randomizer {
+    public class ColorRandomizer : Randomizer {
 
         [SerializeField]
         private Gradient m_Gradient;
