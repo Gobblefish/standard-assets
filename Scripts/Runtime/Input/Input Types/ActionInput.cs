@@ -74,5 +74,12 @@ namespace Gobblefish.Input {
             m_ReleasedTicks = 0f;
         }
 
+        public void EditHeldDuration(float duration) {
+            m_HeldTicks += duration;
+            if (m_HeldTicks < 0f) {
+                m_HeldTicks = 0f;
+            }
+        }
+
     }
 }
