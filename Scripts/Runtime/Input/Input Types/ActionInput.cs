@@ -32,6 +32,7 @@ namespace Gobblefish.Input {
         
         [SerializeField] 
         private float m_HeldTicks = 0f;
+        public float HeldDuration => m_HeldTicks;
         
         // The useable information from this action's state.
         public bool Pressed => m_PressedTicks > 0f;
