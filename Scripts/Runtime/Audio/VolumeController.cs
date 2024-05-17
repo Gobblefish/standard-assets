@@ -18,6 +18,10 @@ namespace Gobblefish.Audio {
         [SerializeField]
         private AudioType m_Type = AudioType.Sound;
 
+        void OnEnable() {
+            SetSliderValue();
+        }
+
         public void SetValue(float value) {
             switch (m_Type) {
                 case AudioType.Sound:
@@ -31,6 +35,25 @@ namespace Gobblefish.Audio {
                     break;
             }
             AudioManager.Settings.Save();
+        }
+
+        public void SetSliderValue() {
+            float value = 0f;
+            switch (m_Type) {
+                case AudioType.Sound:
+                    value = AudioManager.Settings.soundVolume;
+                    break;
+                case AudioType.Ambience:
+                    value = AudioManager.Settings.ambienceVolume;
+                    break;
+                case AudioType.Music:
+                    value = AudioManager.Settings.musicVolume;
+                    break;
+            }
+            Gobblefish.UI.Slider slider = GetComponent<Gobblefish.UI.Slider>();
+            if (slider != null) {
+                slider.SetValue(value);
+            }
         }
     
     }
