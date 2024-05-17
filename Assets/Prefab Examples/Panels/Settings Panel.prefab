@@ -805,12 +805,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1402773001308652513, guid: 76628c4fe4792ea49b76b8e3ff36b3e4, type: 3}
+      propertyPath: m_Slider
+      value: 
+      objectReference: {fileID: 4287588682931873318}
     - target: {fileID: 8046597611223549295, guid: 76628c4fe4792ea49b76b8e3ff36b3e4, type: 3}
       propertyPath: m_Name
       value: Slider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76628c4fe4792ea49b76b8e3ff36b3e4, type: 3}
+--- !u!114 &4287588682931873318 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6653212642138273498, guid: 76628c4fe4792ea49b76b8e3ff36b3e4, type: 3}
+  m_PrefabInstance: {fileID: 7481717671389139196}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81a590bafcc5432449068dbfc1e1ac2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7411555723336623117 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 76354745770947825, guid: 76628c4fe4792ea49b76b8e3ff36b3e4, type: 3}

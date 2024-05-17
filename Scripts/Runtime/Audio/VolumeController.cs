@@ -18,6 +18,9 @@ namespace Gobblefish.Audio {
         [SerializeField]
         private AudioType m_Type = AudioType.Sound;
 
+        [SerializeField]
+        private Gobblefish.UI.Slider m_Slider;
+
         void OnEnable() {
             SetSliderValue();
         }
@@ -50,9 +53,8 @@ namespace Gobblefish.Audio {
                     value = AudioManager.Settings.musicVolume;
                     break;
             }
-            Gobblefish.UI.Slider slider = GetComponent<Gobblefish.UI.Slider>();
-            if (slider != null) {
-                slider.SetValue(value);
+            if (m_Slider != null) {
+                m_Slider.SetValue(value);
             }
         }
     
