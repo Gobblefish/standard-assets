@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-namespace Blobbers.Graphics {
+namespace Blobbers.UI {
 
     [ExecuteInEditMode]
     public class TextEditor : MonoBehaviour {
