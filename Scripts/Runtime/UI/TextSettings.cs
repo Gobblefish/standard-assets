@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-namespace Blobbers.UI {
+namespace Blobbers.Graphics {
 
     [CreateAssetMenu(fileName="TextSettings", menuName="Text/Settings")]
     public class TextSettings : ScriptableObject {
