@@ -1,24 +1,23 @@
-// System.
-using System.Collections;
-using System.Collections.Generic;
 // Unity.
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Gobblefish {
 
-    [CreateAssetMenu(fileName="SceneSwitch", menuName="SceneSwitch")]
-    public class SceneSwitch : ScriptableObject {
+    /// <summary>
+    /// A wrapper object to organize objects that contains functionality that is useful to call from events
+    /// The purpose of these is to be used to call events from the inspector.
+    /// Do not add functionality meant to be called from within other scripts in here!
+    /// <summary>
+    public class SceneCommands : MonoBehaviour {
 
-        public void SwitchScenes(string sceneName) {
+        // Loads a scene by the given scene name.
+        public void LoadSceneByName(string sceneName) {
             SceneManager.LoadScene(sceneName);          
         }
 
-        public static void GoTo(string sceneName) {
-            SceneManager.LoadScene(sceneName);          
-        }
-
-        public static void QuitApplication() {
+        // Quits the application.
+        public void QuitApplication() {
             // If you must programmatically quit an Android application, 
             // you can instead move the application to the background via
             // Activity.moveTaskToBack. 

@@ -261,11 +261,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2599655672272563895, guid: 795ab23b3e0c2834aaf8118fe58dc298, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
+      value: Activate
       objectReference: {fileID: 0}
     - target: {fileID: 2599655672272563895, guid: 795ab23b3e0c2834aaf8118fe58dc298, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Gobblefish.Input.Keyboard.KeybindController, Assembly-CSharp-firstpass
+      value: Gobblefish.UI.KeybindCommands, Gobblefish.Runtime
       objectReference: {fileID: 0}
     - target: {fileID: 2599655672272563895, guid: 795ab23b3e0c2834aaf8118fe58dc298, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
@@ -383,15 +383,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3523569270762262098}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b628eff3f0cf284da3563306876e679, type: 3}
+  m_Script: {fileID: 11500000, guid: f943dd363df6149f19bea60b50313787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Type: 0
   m_Active: 0
   m_KeyIndex: 0
-  m_TextMesh: {fileID: 2456403988558380199}
-  m_Image: {fileID: 705560748467294097}
-  m_ActiveMaterial: {fileID: 2100000, guid: dd3e2715a1de77c40991c7a3ec8e69db, type: 2}
+  m_TextBackground: {fileID: 705560748467294097}
 --- !u!224 &3523569270762262099 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2599655672272563900, guid: 795ab23b3e0c2834aaf8118fe58dc298, type: 3}

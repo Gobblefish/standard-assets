@@ -26,6 +26,11 @@ namespace Gobblefish {
 
         // Runs once on instantiation.
         protected virtual void Awake() {
+            if (Instance != null && Application.isPlaying) {
+                Destroy(gameObject);
+                return;
+            }
+
             Instance = this.GetComponent<TManager>();
             m_Settings = m_Settings.Read();
             m_OnLoad.Invoke();

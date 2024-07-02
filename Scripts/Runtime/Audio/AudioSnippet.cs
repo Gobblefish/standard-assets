@@ -36,4 +36,12 @@ namespace Gobblefish.Audio {
     
     }
 
+        /// <summary>
+    /// An easy component to be able to control the volume of a clip.
+    /// </summary>
+    [System.Serializable]
+    public class SoundEffect : AudioSnippet {
+
+    }
+
 }

@@ -41,13 +41,14 @@ namespace Gobblefish {
 
     public static class ComponentExtensions {
 
-        // public static T GetOrAdd<T>(this MonoBehaviour mb) {
-        //     T t = mb.GetComponent<T>() == null;
-        //     if (t == null) {
-        //         return mb.gameObject.AddComponent<T>();
-        //     }
-        //     return t;
-        // }
+        public static T Require<T>(this MonoBehaviour mb) 
+            where T : MonoBehaviour {
+            T t = mb.GetComponent<T>();
+            if (t == null) {
+                return mb.gameObject.AddComponent<T>();
+            }
+            return t;
+        }
 
         public static void DestroyAppropriately(this GameObject gameObject) {
             if (!Application.isPlaying) { GameObject.DestroyImmediate(gameObject); }

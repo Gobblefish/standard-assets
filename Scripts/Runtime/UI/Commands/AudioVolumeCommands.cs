@@ -1,13 +1,14 @@
 // Unity.
 using UnityEngine;
 
-namespace Gobblefish.Audio {
+namespace Gobblefish.UI {
+
+    using Audio;
 
     /// <summary>
-    /// An easy component to be able to control the volume of a clip.
+    ///
     /// </summary>
-    [System.Serializable]
-    public class VolumeController : MonoBehaviour {
+    public class AudioVolumeCommands : MonoBehaviour {
 
         public enum AudioType {
             Sound,
@@ -18,14 +19,7 @@ namespace Gobblefish.Audio {
         [SerializeField]
         private AudioType m_Type = AudioType.Sound;
 
-        [SerializeField]
-        private Gobblefish.UI.Slider m_Slider;
-
-        void OnEnable() {
-            SetSliderValue();
-        }
-
-        public void SetValue(float value) {
+        public void SetAudioVolume(float value) {
             switch (m_Type) {
                 case AudioType.Sound:
                     AudioManager.Settings.soundVolume = value;
@@ -40,21 +34,16 @@ namespace Gobblefish.Audio {
             AudioManager.Settings.Save();
         }
 
-        public void SetSliderValue() {
-            float value = 0f;
+        public float GetAudioVolume() {
             switch (m_Type) {
                 case AudioType.Sound:
-                    value = AudioManager.Settings.soundVolume;
-                    break;
+                    return AudioManager.Settings.soundVolume;
                 case AudioType.Ambience:
-                    value = AudioManager.Settings.ambienceVolume;
-                    break;
+                    return AudioManager.Settings.ambienceVolume;
                 case AudioType.Music:
-                    value = AudioManager.Settings.musicVolume;
-                    break;
-            }
-            if (m_Slider != null) {
-                m_Slider.SetValue(value);
+                    return AudioManager.Settings.musicVolume;
+                default:
+                    return 0f;
             }
         }
     
