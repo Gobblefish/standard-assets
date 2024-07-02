@@ -30,8 +30,8 @@ namespace Gobblefish.UI {
 
             Slider slider = tComponent.GetComponent<Slider>();
             if (slider != null) {
-                slider.nodeBkg.sprite = m_Format.sliderNodeSprite;
-                slider.barBkg.sprite = m_Format.sliderBarSprite;
+                // slider.nodeBkg.sprite = m_Format.sliderNodeSprite;
+                // slider.barBkg.sprite = m_Format.sliderBarSprite;
             }
 
         }

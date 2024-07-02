@@ -4,9 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 // Unity.
 using UnityEngine;
-using Gobblefish.Random;
 
-namespace Gobblefish.Animation {
+namespace Gobblefish.Graphics {
 
     [System.Serializable]
     public class SpriteAnimation {

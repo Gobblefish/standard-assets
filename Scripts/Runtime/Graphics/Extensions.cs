@@ -64,7 +64,7 @@ namespace Gobblefish.Graphics {
             return true;
         }
 
-        public static BoundsInt GetBoundsInt(this Camera camera, Grid grid) {
+        public static BoundsInt GetPortionOfGridOnScreen(this Camera camera, Grid grid) {
             (Vector2, Vector2) corners = camera.GetCorners();
             BoundsInt bounds = new BoundsInt();
             bounds.SetMinMax(grid.WorldToCell(corners.Item1), grid.WorldToCell(corners.Item2));

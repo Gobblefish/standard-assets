@@ -4,7 +4,9 @@ using System.Collections.Generic;
 // Unity.
 using UnityEngine;
 
-namespace Gobblefish.Random {
+namespace Gobblefish.Graphics {
+
+    using Random = UnityEngine.Random;
 
     [RequireComponent(typeof(SpriteRenderer))]
     public class ColorRandomizer : Randomizer {
@@ -21,7 +23,7 @@ namespace Gobblefish.Random {
         }
 
         public override void Randomize() {
-            m_SpriteRenderer.color = m_Gradient.Evaluate(Range(0f, 1f));
+            m_SpriteRenderer.color = m_Gradient.Evaluate(Random.Range(0f, 1f));
         }
 
     }

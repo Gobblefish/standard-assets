@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-namespace Gobblefish.Animation {
+namespace Gobblefish.Graphics {
 
     /// <summary>
     /// 

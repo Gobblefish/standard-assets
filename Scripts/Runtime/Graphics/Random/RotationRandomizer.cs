@@ -4,9 +4,10 @@ using System.Collections.Generic;
 // Unity.
 using UnityEngine;
 
-namespace Gobblefish.Random {
+namespace Gobblefish.Graphics {
 
-    [ExecuteInEditMode]
+    using Random = UnityEngine.Random;
+
     public class RotationRandomizer : Randomizer {
 
         [SerializeField]
@@ -21,7 +22,7 @@ namespace Gobblefish.Random {
         }
 
         public override void Randomize() {
-            transform.localRotation = m_BaseRotation * Quaternion.Euler(0f, 0f, Range(-m_AngleRange, m_AngleRange));
+            transform.localRotation = m_BaseRotation * Quaternion.Euler(0f, 0f, Random.Range(-m_AngleRange, m_AngleRange));
         }
 
     }

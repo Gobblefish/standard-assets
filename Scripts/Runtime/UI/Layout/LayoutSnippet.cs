@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 // Unity.
 using UnityEngine;
-// Gobblefish
-using Gobblefish.Animation;
 
 namespace Gobblefish.Layout {
+
+    using Graphics;
 
     [System.Serializable]
     public class LayoutSnippet {

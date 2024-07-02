@@ -5,7 +5,7 @@ using System.Collections.Generic;
 // Unity.
 using UnityEngine;
 
-namespace Gobblefish.Animation {
+namespace Gobblefish.Graphics {
 
     [RequireComponent(typeof(LineRenderer))]
     public class TrailAnimator : MonoBehaviour {

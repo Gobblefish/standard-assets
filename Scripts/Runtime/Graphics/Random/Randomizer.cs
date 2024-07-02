@@ -4,7 +4,7 @@ using System.Collections.Generic;
 // Unity.
 using UnityEngine;
 
-namespace Gobblefish.Random {
+namespace Gobblefish.Graphics {
 
     public abstract class Randomizer : MonoBehaviour {
 

@@ -19,6 +19,16 @@ namespace Gobblefish.UI {
         [SerializeField]
         private AudioType m_Type = AudioType.Sound;
 
+        [HideInInspector]
+        private Slider m_Slider;
+
+        void Start() {
+            m_Slider = GetComponent<Slider>();
+            if (m_Slider != null) {
+                m_Slider.SetValue(GetAudioVolume());
+            }
+        }
+
         public void SetAudioVolume(float value) {
             switch (m_Type) {
                 case AudioType.Sound:

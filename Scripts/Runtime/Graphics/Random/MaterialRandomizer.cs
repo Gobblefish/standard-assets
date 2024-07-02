@@ -4,7 +4,9 @@ using System.Collections.Generic;
 // Unity.
 using UnityEngine;
 
-namespace Gobblefish.Random {
+namespace Gobblefish.Graphics {
+
+    using Random = UnityEngine.Random;
 
     [RequireComponent(typeof(SpriteRenderer))]
     public class MaterialRandomizer : Randomizer {
@@ -21,7 +23,7 @@ namespace Gobblefish.Random {
         }
 
         public override void Randomize() {
-            m_SpriteRenderer.sharedMaterial = m_Materials[Range(0, m_Materials.Length)];
+            m_SpriteRenderer.sharedMaterial = m_Materials[Random.Range(0, m_Materials.Length)];
         }
 
     }

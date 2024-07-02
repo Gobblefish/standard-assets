@@ -4,7 +4,9 @@ using System.Collections.Generic;
 // Unity.
 using UnityEngine;
 
-namespace Gobblefish.Random {
+namespace Gobblefish.Graphics {
+
+    using Random = UnityEngine.Random;
 
     public class PositionRandomizer : Randomizer {
 
@@ -23,7 +25,7 @@ namespace Gobblefish.Random {
         }
 
         public override void Randomize() {
-            transform.localPosition = m_Origin + (Vector3)m_Offset + new Vector3(Range(-m_Box.x, m_Box.x), Range(-m_Box.y, m_Box.y), 0f);
+            transform.localPosition = m_Origin + (Vector3)m_Offset + new Vector3(Random.Range(-m_Box.x, m_Box.x),Random. Range(-m_Box.y, m_Box.y), 0f);
         }
 
         void OnDrawGizmos() {

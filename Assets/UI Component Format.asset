@@ -12,12 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e34b8090f794f588a758d13b37a2de, type: 3}
   m_Name: UI Component Format
   m_EditorClassIdentifier: 
-  buttonBkgSprite: {fileID: 156824815, guid: 205a9f9324295c24aa4e8ecfe5c4c24a, type: 3}
+  buttonBkgSprite: {fileID: 804305356, guid: 205a9f9324295c24aa4e8ecfe5c4c24a, type: 3}
   sliderNodeSprite: {fileID: 0}
   sliderBarSprite: {fileID: 0}
-  panelBkgSprite: {fileID: 0}
-  keybindKeyBkgSprite: {fileID: 0}
-  keybindIconBkgSprite: {fileID: 0}
   active:
     scaleFactor: 0.95
     soundEffect:
