@@ -1,17 +1,13 @@
-/* --- Libraries --- */
 // System.
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 // Unity.
 using UnityEngine;
 
 namespace Gobblefish.Graphics {
 
-    [RequireComponent(typeof(LineRenderer))]
-    public class TrailAnimator : MonoBehaviour {
-
-        // The line renderer attached to this trail.
-        private LineRenderer m_LineRenderer;
+    public class SendTrailPositions : PositionsSender {
 
         // The positions along the trail.
         private List<Vector3> m_Positions;
@@ -19,10 +15,6 @@ namespace Gobblefish.Graphics {
         // The last cached position of this transform.
         private Vector3 m_CachedPositions;
 
-        // The width of this trail..
-        [SerializeField] 
-        private float m_Width;
-        
         // The duration after which the trail fades. 
         [SerializeField] 
         private float m_FadeInterval;
@@ -30,13 +22,9 @@ namespace Gobblefish.Graphics {
         // The precision of the trail.
         [SerializeField] 
         private float m_SegmentLength;
-        
 
         // Runs once before the first frame.
         void Start() {
-            m_LineRenderer = GetComponent<LineRenderer>();
-            m_LineRenderer.endWidth = 0f;
-            m_LineRenderer.startWidth = m_Width;
             m_Positions = new List<Vector3>();
         }
 
@@ -57,8 +45,7 @@ namespace Gobblefish.Graphics {
         void AddPosition() {
             m_Positions.Insert(0, transform.position);
             m_CachedPositions = transform.position;
-            m_LineRenderer.positionCount = m_Positions.Count;
-            m_LineRenderer.SetPositions(m_Positions.ToArray());
+            base.SendPositions(m_Positions.ToArray());
             StartCoroutine(IERemove());
         }
 
@@ -71,8 +58,7 @@ namespace Gobblefish.Graphics {
             else if (m_Positions.Count == 1) {
                 m_Positions.RemoveAt(0);
             }
-            m_LineRenderer.positionCount = m_Positions.Count;
-            m_LineRenderer.SetPositions(m_Positions.ToArray());
+            base.SendPositions(m_Positions.ToArray());
         }
 
     }
