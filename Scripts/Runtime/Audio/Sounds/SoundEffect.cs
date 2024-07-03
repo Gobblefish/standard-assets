@@ -7,24 +7,20 @@ namespace Gobblefish.Audio {
     /// An easy component to be able to control the volume of a clip.
     /// </summary>
     [System.Serializable]
-    public class AudioSnippet {
+    public class SoundEffect {
 
-        // The name of the clip.
-        public string name = "untitled";
-
-        // The clip attached to this snippet.    
         public AudioClip clip;
+
+        // The priority of this audio.
+        public int priority = 0;
         
         // The volume to play the audio at.
         [Range(0f, 1f)] 
         public float volume = 1f;
-        
-        // The priority of this audio.
-        public int priority = 0;
 
         public void Play() {
             if (AudioManager.Instance != null) {
-                AudioManager.Sounds.PlaySnippet(this);
+                AudioManager.Sounds.PlaySound(this);
             }
         }
 
@@ -34,14 +30,6 @@ namespace Gobblefish.Audio {
             }
         }
     
-    }
-
-        /// <summary>
-    /// An easy component to be able to control the volume of a clip.
-    /// </summary>
-    [System.Serializable]
-    public class SoundEffect : AudioSnippet {
-
     }
 
 }

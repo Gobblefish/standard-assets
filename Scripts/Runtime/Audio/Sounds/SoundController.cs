@@ -53,9 +53,9 @@ namespace Gobblefish.Audio {
         }
 
         // Play a sound using an audio snippet component.
-        public void PlaySnippet(AudioSnippet snippet) {
-            if (snippet == null) { return; }
-            PlaySound(snippet.clip, snippet.volume);
+        public void PlaySound(SoundEffect sfx) {
+            if (sfx == null) { return; }
+            PlaySound(sfx.clip, sfx.volume);
         }
 
         // Plays the given sound.
