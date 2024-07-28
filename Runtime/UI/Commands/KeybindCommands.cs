@@ -7,7 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-namespace Gobblefish.UI {
+namespace GobbleFish.UI {
 
     using TMPro;
     using Input;

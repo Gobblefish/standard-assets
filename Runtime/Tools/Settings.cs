@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Gobblefish {
+namespace GobbleFish {
 
     public abstract class Settings<TSettings> where TSettings : Settings<TSettings> {
 

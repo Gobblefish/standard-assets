@@ -1,8 +1,8 @@
 // using UnityEngine;
 // using System.Collections;
-// using Gobblefish.Graphics;
+// using GobbleFish.Graphics;
 
-// namespace Gobblefish.Graphics {
+// namespace GobbleFish.Graphics {
 
 //     public class PaintTrail : MonoBehaviour {
 

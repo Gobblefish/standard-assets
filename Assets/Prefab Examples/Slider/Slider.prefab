@@ -212,7 +212,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1402773001308652513}
-        m_TargetAssemblyTypeName: Gobblefish.Audio.VolumeController, Gobblefish.Runtime
+        m_TargetAssemblyTypeName: GobbleFish.Audio.VolumeController, GobbleFish.Runtime
         m_MethodName: SetValue
         m_Mode: 0
         m_Arguments:

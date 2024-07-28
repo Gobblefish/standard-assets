@@ -4,7 +4,7 @@ using System.Collections.Generic;
 // Unity.
 using UnityEngine;
 
-namespace Gobblefish.UI {
+namespace GobbleFish.UI {
 
     public class KeybindGroup : MonoBehaviour {
 

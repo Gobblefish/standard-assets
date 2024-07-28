@@ -4,7 +4,7 @@ using System.Collections.Generic;
 // Unity.
 using UnityEngine;
 
-namespace Gobblefish.Audio {
+namespace GobbleFish.Audio {
 
     ///<summary>
     /// Ties the audio functionality to the rest of the game.
@@ -22,10 +22,6 @@ namespace Gobblefish.Audio {
         // The sounds being played in the game.
         private SoundController m_Sounds;
         public static SoundController Sounds => Instance.m_Sounds;
-
-        // m_Music.Load(m_Settings.musicVolume  * 0.7f);
-        // m_Ambience.Load(m_Settings.ambienceVolume * 0.3f);
-        // m_Sounds.Load();
 
         protected override void Awake() {
             m_Settings = new AudioSettings();

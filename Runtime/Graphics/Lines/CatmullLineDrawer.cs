@@ -4,7 +4,7 @@ using System.Collections.Generic;
 // Unity.
 using UnityEngine;
 
-namespace Gobblefish.Graphics {
+namespace GobbleFish.Graphics {
 
     // a single catmull-rom curve
     public struct CatmullRomCurve {

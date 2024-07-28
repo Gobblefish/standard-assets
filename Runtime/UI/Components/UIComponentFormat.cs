@@ -4,7 +4,7 @@ using System.Collections.Generic;
 // Unity.
 using UnityEngine;
 
-namespace Gobblefish.UI {
+namespace GobbleFish.UI {
 
     [CreateAssetMenu(fileName="UI Component Format", menuName="Formats/UI Component")]
     public class UIComponentFormat : ScriptableFormat {

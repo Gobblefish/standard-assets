@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.VFX;
 
-namespace Gobblefish.UI {
+namespace GobbleFish.UI {
 
     using Audio;
 

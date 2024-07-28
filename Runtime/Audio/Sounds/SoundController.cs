@@ -4,7 +4,7 @@ using System.Collections.Generic;
 // Unity.
 using UnityEngine;
 
-namespace Gobblefish.Audio {
+namespace GobbleFish.Audio {
 
     [System.Serializable]
     public class SoundController {

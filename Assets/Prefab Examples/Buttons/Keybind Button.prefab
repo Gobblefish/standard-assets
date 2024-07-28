@@ -265,7 +265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2599655672272563895, guid: 795ab23b3e0c2834aaf8118fe58dc298, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Gobblefish.UI.KeybindCommands, Gobblefish.Runtime
+      value: GobbleFish.UI.KeybindCommands, GobbleFish.Runtime
       objectReference: {fileID: 0}
     - target: {fileID: 2599655672272563895, guid: 795ab23b3e0c2834aaf8118fe58dc298, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument

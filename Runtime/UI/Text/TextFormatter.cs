@@ -4,7 +4,7 @@ using System.Collections.Generic;
 // Unity.
 using UnityEngine;
 
-namespace Gobblefish.UI.Text {
+namespace GobbleFish.UI.Text {
 
     using TMPro;
 

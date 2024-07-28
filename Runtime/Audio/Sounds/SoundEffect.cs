@@ -1,7 +1,7 @@
 // Unity.
 using UnityEngine;
 
-namespace Gobblefish.Audio {
+namespace GobbleFish.Audio {
 
     /// <summary>
     /// An easy component to be able to control the volume of a clip.

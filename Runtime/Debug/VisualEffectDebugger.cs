@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.VFX;
 using UnityEngine.Experimental.Rendering.Universal;
 
-namespace Gobblefish.Graphics {
+namespace GobbleFish.Graphics {
 
     ///<summary>
     /// 

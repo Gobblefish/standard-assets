@@ -5,7 +5,7 @@ using System.Collections.Generic;
 // Unity.
 using UnityEngine;
 
-namespace Gobblefish.Graphics {
+namespace GobbleFish.Graphics {
 
     /// <summary>
     /// 

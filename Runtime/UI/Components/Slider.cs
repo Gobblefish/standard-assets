@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 
-namespace Gobblefish.UI {
+namespace GobbleFish.UI {
 
     ///<summary>
     /// 

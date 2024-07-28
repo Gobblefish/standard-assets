@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Gobblefish {
+namespace GobbleFish {
 
     /// <summary>
     /// A wrapper object to organize objects that contains functionality that is useful to call from events

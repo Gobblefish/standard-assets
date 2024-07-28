@@ -5,7 +5,7 @@ using System.Collections.Generic;
 // Unity.
 using UnityEngine;
 
-namespace Gobblefish.Audio {
+namespace GobbleFish.Audio {
 
     public static class AudioExtensions {
         

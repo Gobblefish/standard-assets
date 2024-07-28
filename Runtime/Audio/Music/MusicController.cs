@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 // Unity.
 using UnityEngine;
-// Gobblefish.
-using Gobblefish.Audio;
+// GobbleFish.
+using GobbleFish.Audio;
 
-namespace Gobblefish.Audio {
+namespace GobbleFish.Audio {
 
     [System.Serializable]
     public class MusicController {

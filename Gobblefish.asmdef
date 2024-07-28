@@ -1,5 +1,5 @@
 {
-    "name": "Gobblefish.Runtime",
+    "name": "GobbleFish.Runtime",
     "rootNamespace": "",
     "references": [
         "Unity.RenderPipelines.Core.Runtime",

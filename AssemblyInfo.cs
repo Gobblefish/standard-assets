@@ -1,7 +1,7 @@
 using System.Runtime.CompilerServices;
 
 // Allow internal visibility for testing purposes.
-[assembly: InternalsVisibleTo("Gobblefish.Runtime")]
+[assembly: InternalsVisibleTo("GobbleFish.Runtime")]
 // [assembly: InternalsVisibleTo("UnityEngine.Rendering.Universal")]
 
 #if UNITY_EDITOR

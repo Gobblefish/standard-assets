@@ -1,7 +1,7 @@
 // Unity.
 using UnityEngine;
 
-namespace Gobblefish.Audio {
+namespace GobbleFish.Audio {
 
     /// <summary>
     /// 

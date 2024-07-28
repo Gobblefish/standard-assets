@@ -4,7 +4,7 @@ using System.Collections.Generic;
 // Unity.
 using UnityEngine;
 
-namespace Gobblefish.Input {
+namespace GobbleFish.Input {
 
     ///<summary>
     /// Processes all the input information for this particular action.

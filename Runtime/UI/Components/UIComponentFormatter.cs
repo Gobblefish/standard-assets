@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Gobblefish.UI {
+namespace GobbleFish.UI {
 
     /// <summary>
     /// Formats the ui components of the transform and its children to be consistent

@@ -4,12 +4,12 @@ using System.Collections.Generic;
 // Unity.
 using UnityEngine;
 
-namespace Gobblefish.Input {
+namespace GobbleFish.Input {
 
     ///<summary>
     /// Collects the inputs for a character.
     ///<summary>
-    public abstract class InputSystem : Gobblefish.Manager<InputSystem, InputSettings> {
+    public abstract class InputSystem : GobbleFish.Manager<InputSystem, InputSettings> {
 
         // The characters directional input.
         [SerializeField] 

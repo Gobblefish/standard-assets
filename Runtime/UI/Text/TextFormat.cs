@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-namespace Gobblefish.UI.Text {
+namespace GobbleFish.UI.Text {
 
     /// <summary>
     /// A scriptable object that can hold the format to be used by a text formatter.

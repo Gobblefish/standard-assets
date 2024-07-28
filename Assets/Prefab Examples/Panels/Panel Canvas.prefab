@@ -297,7 +297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6508233926114701635, guid: 6bf19d1409328dc439e12bcdd4c1c3fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Gobblefish.UI.Panel, Assembly-CSharp-firstpass
+      value: GobbleFish.UI.Panel, Assembly-CSharp-firstpass
       objectReference: {fileID: 0}
     - target: {fileID: 6508233926114701635, guid: 6bf19d1409328dc439e12bcdd4c1c3fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

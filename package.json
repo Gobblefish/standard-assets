@@ -1,7 +1,7 @@
 {
-  "name": "com.gobblefish.standards",
+  "name": "com.GobbleFish.standards",
   "version": "1.0.0",
-  "displayName": "Gobblefish Standard Assets",
+  "displayName": "GobbleFish Standard Assets",
   "description": "A bunch of reusable assets that can be dropped into any project",
   "unity": "2021.2",
   "dependencies": {
@@ -9,14 +9,14 @@
     "com.unity.2d.common": "6.0.3"
  },
  "keywords": [
-    "gobblefish"
+    "GobbleFish"
   ],
   "author": {
-    "name": "Gobblefish",
-    "url": "https://www.gobblefish.com"
+    "name": "GobbleFish",
+    "url": "https://www.GobbleFish.com"
   },
   "repository": {
-    "url": "https://github.com/Gobblefish/standard-assets.git",
+    "url": "https://github.com/GobbleFish/standard-assets.git",
     "type": "git"
   }  
 }

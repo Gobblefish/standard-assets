@@ -5,7 +5,7 @@ using System.Linq;
 // Unity.
 using UnityEngine;
 
-namespace Gobblefish.Graphics {
+namespace GobbleFish.Graphics {
 
     public class SendTrailPositions : PositionsSender {
 

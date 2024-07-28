@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Gobblefish {
+namespace GobbleFish {
 
     [DefaultExecutionOrder(-1000)]
     public abstract class Manager<TManager, TSettings> : MonoBehaviour 
