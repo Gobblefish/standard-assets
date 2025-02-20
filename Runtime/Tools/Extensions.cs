@@ -1,4 +1,3 @@
-/* --- Libraries --- */
 // System.
 using System.Collections;
 using System.Collections.Generic;
@@ -41,8 +40,17 @@ namespace GobbleFish {
 
     public static class ComponentExtensions {
 
-        public static T Require<T>(this MonoBehaviour mb) 
+        public static T RequireBehaviour<T>(this MonoBehaviour mb) 
             where T : MonoBehaviour {
+            T t = mb.GetComponent<T>();
+            if (t == null) {
+                return mb.gameObject.AddComponent<T>();
+            }
+            return t;
+        }
+
+        public static T Require<T>(this MonoBehaviour mb) 
+            where T : Component {
             T t = mb.GetComponent<T>();
             if (t == null) {
                 return mb.gameObject.AddComponent<T>();
@@ -56,8 +64,6 @@ namespace GobbleFish {
         }
 
         // public static List<T> CollectAllU
-
-
 
     }
 
