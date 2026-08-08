@@ -6,9 +6,6 @@ using UnityEngine;
 
 namespace Gobblefish {
 
-    /// <summary>
-    ///
-    /// <summary>
     public abstract class ScriptableCollection<Item> : ScriptableObject 
         where Item : class {
 
